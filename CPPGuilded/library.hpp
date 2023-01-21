@@ -7,9 +7,10 @@
 // #ifndef cppguilded
 // #define cppguilded
 
+#include <boost/beast/http.hpp>
+
 #include "Classes/Utils.hpp"
 
-#include <boost/beast/http.hpp>
 using namespace boost;
 
 namespace http = boost::beast::http;
