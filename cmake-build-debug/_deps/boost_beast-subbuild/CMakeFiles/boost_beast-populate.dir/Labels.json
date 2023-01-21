@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/CMakeFiles/boost_beast-populate"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/CMakeFiles/boost_beast-populate.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/CMakeFiles/boost_beast-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/boost_beast-populate-prefix/src/boost_beast-populate-stamp/boost_beast-populate-build.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/boost_beast-populate-prefix/src/boost_beast-populate-stamp/boost_beast-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/boost_beast-populate-prefix/src/boost_beast-populate-stamp/boost_beast-populate-download.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/boost_beast-populate-prefix/src/boost_beast-populate-stamp/boost_beast-populate-install.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/boost_beast-populate-prefix/src/boost_beast-populate-stamp/boost_beast-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/boost_beast-populate-prefix/src/boost_beast-populate-stamp/boost_beast-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/boost_beast-populate-prefix/src/boost_beast-populate-stamp/boost_beast-populate-test.rule"
+		},
+		{
+			"file" : "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/boost_beast-populate-prefix/src/boost_beast-populate-stamp/boost_beast-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"boost_beast-populate"
+		],
+		"name" : "boost_beast-populate"
+	}
+}

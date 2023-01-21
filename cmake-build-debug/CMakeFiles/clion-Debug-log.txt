@@ -1,0 +1,26 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -DCMAKE_TOOLCHAIN_FILE=/Users/ibrahim/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_OSX_ARCHITECTURES=arm64 -G Ninja -S /Users/ibrahim/CLionProjects/CPPGuilded -B /Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug
+CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:1384 (message):
+  New Boost version may have incorrect or missing dependencies and imported
+  targets
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:1507 (_Boost_COMPONENT_DEPENDENCIES)
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:2118 (_Boost_MISSING_DEPENDENCIES)
+  /Users/ibrahim/vcpkg/installed/arm64-osx/share/boost/vcpkg-cmake-wrapper.cmake:11 (_find_package)
+  /Users/ibrahim/vcpkg/scripts/buildsystems/vcpkg.cmake:797 (include)
+  CMakeLists.txt:50 (find_package)
+
+
+CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:1384 (message):
+  New Boost version may have incorrect or missing dependencies and imported
+  targets
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:1507 (_Boost_COMPONENT_DEPENDENCIES)
+  /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:2118 (_Boost_MISSING_DEPENDENCIES)
+  /Users/ibrahim/vcpkg/installed/arm64-osx/share/boost/vcpkg-cmake-wrapper.cmake:11 (_find_package)
+  /Users/ibrahim/vcpkg/scripts/buildsystems/vcpkg.cmake:797 (include)
+  CMakeLists.txt:50 (find_package)
+
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug
