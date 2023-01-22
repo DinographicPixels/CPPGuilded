@@ -1,7 +1,8 @@
 #pragma once
-#include "library.hpp"
+#include "static.hpp"
 
 namespace CPPGuilded {
+	class Client;
     class Message {
     public:
         string id;

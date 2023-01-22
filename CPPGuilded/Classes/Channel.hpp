@@ -4,6 +4,7 @@
 using namespace std;
 
 namespace CPPGuilded {
+	class Client;
     class Channel {
     public:
         string id;
@@ -14,7 +15,7 @@ namespace CPPGuilded {
         string createdBy;
         string serverID;
         string groupID;
-        DLL_EXPORT Channel(const json& data);
+        DLL_EXPORT Channel(const json& data, Client* client);
     };
 
     void sus();

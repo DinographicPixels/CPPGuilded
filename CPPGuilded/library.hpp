@@ -10,25 +10,33 @@
 #include <boost/beast/http.hpp>
 
 #include "Classes/Utils.hpp"
+// #include "Classes/Message.hpp"
 
 using namespace boost;
 
 namespace http = boost::beast::http;
 
 namespace CPPGuilded {
+	class Message;
+	class RequestHandler;
+	// struct GuildedHTTPResponse;
     class Client {
     private:
-        struct GuildedHTTPResponse {
-            unsigned int status_code;
-            std::map<std::string, std::string> headers;
-            std::string body;
-        };
+		struct POSTChannelMessageBODY {
+			bool isPrivate = false;
+			bool isSilent = false;
+			string replyMessageIds = "";
+			string content = "";
+			string embeds = "";
+			NLOHMANN_DEFINE_TYPE_INTRUSIVE(POSTChannelMessageBODY, isPrivate, isSilent, replyMessageIds, content, embeds)
+		};
     public:
         DLL_EXPORT Client(string TOKEN);
         std::string token;
         CPPGuilded::Utils* utils;
+		RequestHandler* rest;
         bool hello(bool sus);
-        GuildedHTTPResponse request(const string method, const string target, const string& data = "");
+		Message* createMessage(std::string channelID, POSTChannelMessageBODY options);
     };
 }
 

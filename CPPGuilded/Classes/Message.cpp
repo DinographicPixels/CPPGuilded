@@ -4,21 +4,21 @@
 
 #include "Exceptions.hpp"
 
-// #include "library.hpp"
+#include "library.hpp"
 
 CPPGuilded::Message::Message(json &data, Client* client) {
-    id = data.at("id").get<string>();
+    id = client->utils->getValue<std::string>(data, "id");
     type = client->utils->getValue<std::string>(data, "type");
-    serverID = data.at("serverId").get<string>();
-    channelID = data.at("channelId").get<string>();
-    content = data.at("content").get<string>();
-    embeds = data.value("embeds", "UNDEFINED");
-    replyMessageIDs = data.value("replyMessageIds", "UNDEFINED");
-    isPrivate = data.value("isPrivate", false);
-    isSilent = data.value("isSilent", false);
-    mentions = data.value("mentions", "UNDEFINED");
-    createdAt = data.at("createdAt").get<string>();
-    createdBy = data.at("createdBy").get<string>();
-    createdByWebhookID = data.value("createdByWebhookId", "UNDEFINED");
-    updatedAt = data.value("updatedAt", "UNDEFINED");
+    serverID = client->utils->getValue<std::string>(data, "serverId");
+    channelID = client->utils->getValue<std::string>(data, "chnannelId");
+    content = client->utils->getValue<std::string>(data, "content");
+    embeds = client->utils->getValue<std::string>(data, "embeds");
+    replyMessageIDs = client->utils->getValue<std::string>(data, "replyMessageIds");
+    isPrivate = client->utils->getValue<bool>(data, "isPrivate");
+    isSilent = client->utils->getValue<bool>(data, "isSilent");
+    mentions = client->utils->getValue<std::string>(data, "mentions");
+    createdAt = client->utils->getValue<std::string>(data, "createdAt");
+    createdBy = client->utils->getValue<std::string>(data, "createdBy");
+    createdByWebhookID = client->utils->getValue<std::string>(data, "createdByWebhookId");
+    updatedAt = client->utils->getValue<std::string>(data, "updatedAt");
 }

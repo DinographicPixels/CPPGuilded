@@ -6,7 +6,7 @@
 
 using namespace std;
 
-CPPGuilded::Channel::Channel(const json& data) {
+CPPGuilded::Channel::Channel(const json& data, Client* client) {
     id = data.at("id").get<string>();
     type = data.at("type").get<string>();
     name = data.at("name").get<string>();
