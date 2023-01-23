@@ -23,8 +23,8 @@ namespace CPPGuilded {
 			} else if constexpr (std::is_same<T, vector<int>>()){
 				vector<int> defVal = {};
 				return data.value(name, defVal);
-			} else if constexpr (std::is_same<T, vector<Message::EmbedStructure>>()) {
-				vector<Message::EmbedStructure> defVal = {};
+			} else if constexpr (std::is_same<T, vector<Message::Embed>>()) {
+				vector<Message::Embed> defVal = {};
 				return data.value(name, defVal);
 			} else {
 				return data.value(name, "UNDEFINED");

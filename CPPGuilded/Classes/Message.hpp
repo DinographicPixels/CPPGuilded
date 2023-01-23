@@ -5,19 +5,50 @@ namespace CPPGuilded {
 	class Client;
     class Message {
     public:
-	  struct EmbedStructure {
+	  class Embed {
+		protected:
+		  struct FIELDS_FIELD {
+			  string name;
+			  string value;
+			  bool isInline;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(fields, name, value);
+		  };
+		public:
 		  string title;
 		  string description;
 		  string url;
 		  int color;
-		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(EmbedStructure, title);
+		  struct footer {
+			  string text;
+			  string icon_url;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(footer, icon_url);
+		  };
+		  string timestamp;
+		  struct thumbnail {
+			  string url;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(thumbnail, url);
+		  };
+		  struct image {
+			  string url;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(image, url);
+		  };
+		  struct author {
+			  string name;
+			  string url;
+			  string icon_url;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(author, name, url, icon_url);
+		  };
+		  vector<FIELDS_FIELD> fields;
+		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(Embed, title, description);
+		  // DLL_EXPORT Embed(string title);
+		  DLL_EXPORT json to_json();
 	  };
         string id;
         string type;
         string serverID;
         string channelID;
         string content;
-        vector<EmbedStructure> embeds;
+        vector<Embed> embeds;
         vector<string> replyMessageIDs;
         bool isPrivate;
         bool isSilent;

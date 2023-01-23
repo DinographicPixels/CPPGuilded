@@ -28,8 +28,8 @@ namespace CPPGuilded {
 		  vector<string> replyMessageIds;
 		  bool isPrivate = false;
 		  bool isSilent = false;
-		  vector<Message::EmbedStructure> embeds;
-		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateMessageOptions, isPrivate, isSilent, replyMessageIds, content, embeds);
+		  vector<Message::Embed*> embeds;
+		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateMessageOptions, content, replyMessageIds, isPrivate, isSilent);
 	  };
         DLL_EXPORT Client(string TOKEN);
         std::string token;
@@ -37,7 +37,7 @@ namespace CPPGuilded {
 		RequestHandler* rest;
         bool hello(bool sus);
 		Message* createMessage(std::string channelID, CreateMessageOptions options);
-		Message::EmbedStructure test (Message::EmbedStructure structure);
+		Message::Embed test (Message::Embed structure);
     };
 }
 

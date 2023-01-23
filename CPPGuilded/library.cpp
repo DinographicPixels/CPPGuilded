@@ -48,8 +48,21 @@ bool CPPGuilded::Client::hello(bool sus) {
 
 
 CPPGuilded::Message* CPPGuilded::Client::createMessage(std::string channelID, CreateMessageOptions options) {
-	CreateMessageOptions cringe = { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, { { "the title" } } };
+	Message::Embed* messageEmbed = new Message::Embed();
+	messageEmbed->title = "embed testin'";
+	messageEmbed->description = "this is a desc";
+	messageEmbed->url = "https://touchguild.com";
+	messageEmbed->fields = {{"field 1", "value 1", true}};
+	CreateMessageOptions cringe = { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, {messageEmbed} };
 	json jsonOptions = cringe;
+	if (cringe.embeds.size() >= 1){
+		for (auto x: cringe.embeds){
+			json jsonEmbed = x->to_json();
+			jsonOptions["embeds"].push_back(jsonEmbed);
+		}
+		// json jsonEmbed = json{*messageEmbed};
+		//jsonOptions["embeds"] = jsonEmbed;
+	}
 	RequestHandler::GuildedHTTPResponse req = rest->request("POST", "/channels/" + channelID + "/messages", jsonOptions.dump());
 	json res = json::parse(req.body).at("message");
 
