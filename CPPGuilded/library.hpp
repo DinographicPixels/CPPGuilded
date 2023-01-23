@@ -23,19 +23,12 @@ namespace CPPGuilded {
     class Client {
     private:
     public:
-	  struct EmbedStructure {
-		  string title;
-		  string description;
-		  string url = "https://touchguild.com";
-		  int color;
-		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(EmbedStructure, title, description, url, color);
-	  };
 	  struct CreateMessageOptions {
 		  string content;
 		  vector<string> replyMessageIds;
 		  bool isPrivate = false;
 		  bool isSilent = false;
-		  vector<EmbedStructure> embeds;
+		  vector<Message::EmbedStructure> embeds;
 		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateMessageOptions, isPrivate, isSilent, replyMessageIds, content, embeds);
 	  };
         DLL_EXPORT Client(string TOKEN);
@@ -44,7 +37,7 @@ namespace CPPGuilded {
 		RequestHandler* rest;
         bool hello(bool sus);
 		Message* createMessage(std::string channelID, CreateMessageOptions options);
-		EmbedStructure test (EmbedStructure structure);
+		Message::EmbedStructure test (Message::EmbedStructure structure);
     };
 }
 

@@ -8,9 +8,9 @@ namespace CPPGuilded {
 	  struct EmbedStructure {
 		  string title;
 		  string description;
-		  string url = "https://touchguild.com";
+		  string url;
 		  int color;
-		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(EmbedStructure, title, description, url, color);
+		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(EmbedStructure, title);
 	  };
         string id;
         string type;
