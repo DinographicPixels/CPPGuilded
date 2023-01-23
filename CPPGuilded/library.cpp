@@ -47,9 +47,11 @@ bool CPPGuilded::Client::hello(bool sus) {
 };
 
 
-CPPGuilded::Message* CPPGuilded::Client::createMessage(std::string channelID, POSTChannelMessageBODY options) {
-	json jsonOptions = options;
-	RequestHandler::GuildedHTTPResponse req = rest->request("POST", "/channels/" + channelID + "/messages", jsonOptions);
-	json res = json::parse(req.body);
+CPPGuilded::Message* CPPGuilded::Client::createMessage(std::string channelID, CreateMessageOptions options) {
+	CreateMessageOptions cringe = { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, { { "the title" } } };
+	json jsonOptions = cringe;
+	RequestHandler::GuildedHTTPResponse req = rest->request("POST", "/channels/" + channelID + "/messages", jsonOptions.dump());
+	json res = json::parse(req.body).at("message");
+
 	return new Message(res, this);
 }

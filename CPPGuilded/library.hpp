@@ -22,21 +22,29 @@ namespace CPPGuilded {
 	// struct GuildedHTTPResponse;
     class Client {
     private:
-		struct POSTChannelMessageBODY {
-			bool isPrivate = false;
-			bool isSilent = false;
-			string replyMessageIds = "";
-			string content = "";
-			string embeds = "";
-			NLOHMANN_DEFINE_TYPE_INTRUSIVE(POSTChannelMessageBODY, isPrivate, isSilent, replyMessageIds, content, embeds)
-		};
     public:
+	  struct EmbedStructure {
+		  string title;
+		  string description;
+		  string url = "https://touchguild.com";
+		  int color;
+		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(EmbedStructure, title, description, url, color);
+	  };
+	  struct CreateMessageOptions {
+		  string content;
+		  vector<string> replyMessageIds;
+		  bool isPrivate = false;
+		  bool isSilent = false;
+		  vector<EmbedStructure> embeds;
+		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateMessageOptions, isPrivate, isSilent, replyMessageIds, content, embeds);
+	  };
         DLL_EXPORT Client(string TOKEN);
         std::string token;
         CPPGuilded::Utils* utils;
 		RequestHandler* rest;
         bool hello(bool sus);
-		Message* createMessage(std::string channelID, POSTChannelMessageBODY options);
+		Message* createMessage(std::string channelID, CreateMessageOptions options);
+		EmbedStructure test (EmbedStructure structure);
     };
 }
 

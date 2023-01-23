@@ -12,8 +12,8 @@ CPPGuilded::Message::Message(json &data, Client* client) {
     serverID = client->utils->getValue<std::string>(data, "serverId");
     channelID = client->utils->getValue<std::string>(data, "chnannelId");
     content = client->utils->getValue<std::string>(data, "content");
-    embeds = client->utils->getValue<std::string>(data, "embeds");
-    replyMessageIDs = client->utils->getValue<std::string>(data, "replyMessageIds");
+    embeds = client->utils->getValue<vector<EmbedStructure>>(data, "embeds");
+    replyMessageIDs = client->utils->getValue<vector<string>>(data, "replyMessageIds");
     isPrivate = client->utils->getValue<bool>(data, "isPrivate");
     isSilent = client->utils->getValue<bool>(data, "isSilent");
     mentions = client->utils->getValue<std::string>(data, "mentions");
