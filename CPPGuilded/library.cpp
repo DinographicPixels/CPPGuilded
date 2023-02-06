@@ -15,6 +15,7 @@
 #include "Classes/Message.hpp"
 #include "Classes/Utils.hpp"
 #include "Classes/RequestHandler.hpp"
+#include "Classes/GatewayHandler.hpp"
 
 
 namespace beast = boost::beast;
@@ -23,10 +24,12 @@ namespace net = boost::asio;
 namespace ssl = net::ssl;
 using tcp = net::ip::tcp;
 
-CPPGuilded::Client::Client(string TOKEN) {
+CPPGuilded::Client::Client(string TOKEN){
     token = TOKEN;
-    utils = new CPPGuilded::Utils();
-	rest = new CPPGuilded::RequestHandler(this);
+    utils = std::make_unique<Utils>();
+	rest = std::make_unique<RequestHandler>(this);
+	log = Utils::Logger("Client | CPPGuilded");
+	this->gatewayHandler = std::make_unique<GatewayHandler>(token);
 }
 
 bool CPPGuilded::Client::hello(bool sus) {
@@ -67,4 +70,8 @@ CPPGuilded::Message* CPPGuilded::Client::createMessage(std::string channelID, Cr
 	json res = json::parse(req.body).at("message");
 
 	return new Message(res, this);
+}
+void CPPGuilded::Client::connect() {
+	log.info("Connecting..");
+	this->gatewayHandler->connect().get();
 }

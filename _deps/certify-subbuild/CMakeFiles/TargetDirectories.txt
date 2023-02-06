@@ -1,0 +1,3 @@
+/Users/ibrahim/CLionProjects/CPPGuilded/_deps/certify-subbuild/CMakeFiles/certify-populate.dir
+/Users/ibrahim/CLionProjects/CPPGuilded/_deps/certify-subbuild/CMakeFiles/edit_cache.dir
+/Users/ibrahim/CLionProjects/CPPGuilded/_deps/certify-subbuild/CMakeFiles/rebuild_cache.dir

@@ -42,9 +42,9 @@ add_library( ${PROJECT_NAME} SHARED ${PROJECT_SOURCES} ${PROJECT_HEADERS} CPPGui
 target_include_directories( ${PROJECT_NAME} PRIVATE CPPGuilded )
 
 if(MSVC)
-    set( CMAKE_CXX_FLAGS " /MP /O2 /GL /GS /W3 /sdl /Gd /EHa " )
+    set( CMAKE_CXX_FLAGS " /MP /O2 /GL /GS /W3 /sdl /Gd /EHa -pthread " )
 else(MSVC)
-    set( CMAKE_CXX_FLAGS " -Wall -Wextra -Ofast " )
+    set( CMAKE_CXX_FLAGS " -Wall -Wextra -Ofast -pthread " )
 endif(MSVC)
 
 find_package(Boost COMPONENTS system filesystem REQUIRED)
@@ -72,7 +72,7 @@ endif(VCPKG_TOOLCHAIN)
 install(TARGETS cppguilded DESTINATION lib)
 install(FILES ${PROJECT_HEADERS} DESTINATION /include/cppguilded)
 
-add_executable(tests tests/main.cpp)
+add_executable(tests WIN32 MACOSX_BUNDLE tests/main.cpp)
 
 target_include_directories(tests PRIVATE CPPGuilded)
 

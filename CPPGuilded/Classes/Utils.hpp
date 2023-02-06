@@ -2,9 +2,19 @@
 #include "static.hpp"
 
 #include <iostream>
+#include <thread>
+#include <mutex>
+#include <map>
 
 #include "Message.hpp"
 using namespace std;
+
+enum Loglevel {
+	Debug,
+	Info,
+	Warning,
+	Error
+};
 
 namespace CPPGuilded {
 	class Utils {
@@ -30,5 +40,42 @@ namespace CPPGuilded {
 				return data.value(name, "UNDEFINED");
 			}
 		}
+
+		template <class T>
+		DLL_EXPORT T get_or_else(const json& j, const std::string& key, const T& _default) {
+			if (j.count(key) == 0 || j.at(key).is_null())
+				return _default;
+			else
+				return j.at(key).get<T>();
+		}
+
+		template <class T>
+		DLL_EXPORT std::optional<T> get_optional(const json& j, const std::string& key) {
+			if (j.count(key) == 0 || j.at(key).is_null())
+				return {};
+			else
+				return std::make_optional<T>(j.at(key).get<T>());
+		}
+
+		class Logger {
+		  protected:
+			std::string _name;
+
+		  public:
+			DLL_EXPORT void registerThread(const std::thread::id& id, const std::string& name);
+			DLL_EXPORT void unregisterThread(const std::thread::id& id);
+
+			DLL_EXPORT static void set_log_level(const Loglevel& level);
+
+			DLL_EXPORT Logger(){};
+			DLL_EXPORT Logger(const std::string&);
+
+			DLL_EXPORT void print(const Loglevel level, const std::string& message);
+
+			DLL_EXPORT void debug(const std::string& message);
+			DLL_EXPORT void info(const std::string& message);
+			DLL_EXPORT void warning(const std::string& message);
+			DLL_EXPORT void error(const std::string& message);
+		};
 	};
 }

@@ -19,6 +19,7 @@ namespace http = boost::beast::http;
 namespace CPPGuilded {
 	class Message;
 	class RequestHandler;
+	class GatewayHandler;
 	// struct GuildedHTTPResponse;
     class Client {
     private:
@@ -33,11 +34,14 @@ namespace CPPGuilded {
 	  };
         DLL_EXPORT Client(string TOKEN);
         std::string token;
-        CPPGuilded::Utils* utils;
-		RequestHandler* rest;
+        std::unique_ptr<CPPGuilded::Utils> utils;
+		CPPGuilded::Utils::Logger log;
+		std::unique_ptr<CPPGuilded::RequestHandler> rest;
+		std::unique_ptr<CPPGuilded::GatewayHandler> gatewayHandler;
         bool hello(bool sus);
 		Message* createMessage(std::string channelID, CreateMessageOptions options);
 		Message::Embed test (Message::Embed structure);
+		DLL_EXPORT void connect();
     };
 }
 

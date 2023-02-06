@@ -61,15 +61,12 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/tests")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE DIRECTORY FILES "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/tests.app" USE_SOURCE_PERMISSIONS)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests.app/Contents/MacOS/tests" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests.app/Contents/MacOS/tests")
     execute_process(COMMAND /usr/bin/install_name_tool
       -delete_rpath "/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug"
-      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" -u -r "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests")
-    endif()
+      "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests.app/Contents/MacOS/tests")
   endif()
 endif()
 

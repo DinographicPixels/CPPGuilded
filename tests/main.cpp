@@ -14,5 +14,9 @@ int main() {
 
 	std::cout << "websocket test started" << std::endl;
 
-	CPPGuilded::WSManager* ws = new WSManager("gapi_jQlwqi1jzqrm6eTeWdQZ+rHrqwofVNlFGIFeCBSxLeuHGVVFOQsRSH4pm8iGIYokw3wAt6A/lbVsUDH4EjZipg==");
+	client->connect();
+
+	// CPPGuilded::WSManager* ws = new WSManager("gapi_jQlwqi1jzqrm6eTeWdQZ+rHrqwofVNlFGIFeCBSxLeuHGVVFOQsRSH4pm8iGIYokw3wAt6A/lbVsUDH4EjZipg==");
+	//string wsState = ws->getState() ? "true": "false";
+	//std::cout << "state: " << wsState << std::endl;
 }
