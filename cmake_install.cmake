@@ -61,6 +61,30 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/include/cppguilded/Channel.hpp;/include/cppguilded/Exceptions.hpp;/include/cppguilded/MessageHandler.hpp;/include/cppguilded/GatewayHandler.hpp;/include/cppguilded/WSManager.hpp;/include/cppguilded/Message.hpp;/include/cppguilded/RequestHandler.hpp;/include/cppguilded/Threadpool.hpp;/include/cppguilded/Utils.hpp;/include/cppguilded/library.hpp;/include/cppguilded/static.hpp")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  file(INSTALL DESTINATION "/include/cppguilded" TYPE FILE FILES
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/Channel.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/Exceptions.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/Gateway/Events/MessageHandler.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/Gateway/GatewayHandler.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/Gateway/WSManager.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/Message.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/RequestHandler.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/Threadpool.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/Utils.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/library.hpp"
+    "/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/static.hpp"
+    )
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE DIRECTORY FILES "/Users/ibrahim/CLionProjects/CPPGuilded/tests.app" USE_SOURCE_PERMISSIONS)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests.app/Contents/MacOS/tests" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/tests.app/Contents/MacOS/tests")

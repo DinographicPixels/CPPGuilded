@@ -6,7 +6,7 @@
 
 #include "library.hpp"
 
-CPPGuilded::Message::Message(json &data, Client* client) {
+CPPGuilded::Message::Message(const json &data, Client* client) {
     id = client->utils->getValue<std::string>(data, "id");
     type = client->utils->getValue<std::string>(data, "type");
     serverID = client->utils->getValue<std::string>(data, "serverId");
@@ -25,11 +25,13 @@ CPPGuilded::Message::Message(json &data, Client* client) {
 
 json CPPGuilded::Message::Embed::to_json() {
 	json jsonEmbed;
+	// SIMPLE PROPERTIES
 	if (this->title.length() > 0) jsonEmbed["title"] = this->title;
 	if (this->description.length() > 0) jsonEmbed["description"] = this->description;
 	if (this->url.length() > 0) jsonEmbed["url"] = this->url;
 	if (this->color) jsonEmbed["color"] = this->color;
 
+	// FIELDS
 	for (unsigned int i = 0; i < this->fields.size(); i++){
 		json jsonFields;
 		jsonFields["name"] = fields[i].name;
@@ -37,6 +39,12 @@ json CPPGuilded::Message::Embed::to_json() {
 		jsonFields["inline"] = fields[i].isInline;
 		jsonEmbed["fields"].emplace_back(jsonFields);
 	}
+
+	// FOOTER
+	json jsonFooter;
+	if (this->footer.text.size() > 0) jsonFooter["text"] = this->footer.text;
+	if (this->footer.icon_url.size() > 0) jsonFooter["icon_url"] = this->footer.icon_url;
+	if (this->footer.icon_url.size() > 0 || this->footer.text.size() > 0) jsonEmbed["footer"] = jsonFooter;
 
 	return jsonEmbed;
 }

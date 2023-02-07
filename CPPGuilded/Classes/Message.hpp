@@ -13,16 +13,16 @@ namespace CPPGuilded {
 			  bool isInline;
 			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(fields, name, value);
 		  };
+		  struct FOOTERSTRUCT {
+			  string text;
+			  string icon_url;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(footer, icon_url);
+		  };
 		public:
 		  string title;
 		  string description;
 		  string url;
 		  int color;
-		  struct footer {
-			  string text;
-			  string icon_url;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(footer, icon_url);
-		  };
 		  string timestamp;
 		  struct thumbnail {
 			  string url;
@@ -39,6 +39,7 @@ namespace CPPGuilded {
 			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(author, name, url, icon_url);
 		  };
 		  vector<FIELDS_FIELD> fields;
+		  FOOTERSTRUCT footer;
 		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(Embed, title, description);
 		  // DLL_EXPORT Embed(string title);
 		  DLL_EXPORT json to_json();
@@ -57,6 +58,6 @@ namespace CPPGuilded {
         string createdBy;
         string createdByWebhookID;
         string updatedAt;
-        DLL_EXPORT Message(json& data, Client* client);
+        DLL_EXPORT Message(const json& data, Client* client);
     };
 }

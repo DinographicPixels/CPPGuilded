@@ -36,6 +36,8 @@ FILE(GLOB PROJECT_HEADERS CPPGuilded/*.hpp)
 FILE(GLOB PROJECT_HEADERS CPPGuilded/Classes/*.hpp)
 FILE(GLOB PROJECT_HEADERS CPPGuilded/*.h)
 FILE(GLOB PROJECT_HEADERS CPPGuilded/Classes/*.h)
+FILE(GLOB_RECURSE PROJECT_SOURCES CPPGuilded/*.cpp)
+FILE(GLOB_RECURSE PROJECT_HEADERS CPPGuilded/*.hpp)
 
 add_library( ${PROJECT_NAME} SHARED ${PROJECT_SOURCES} ${PROJECT_HEADERS} CPPGuilded/library.cpp CPPGuilded/static.cpp)
 
@@ -72,7 +74,8 @@ endif(VCPKG_TOOLCHAIN)
 install(TARGETS cppguilded DESTINATION lib)
 install(FILES ${PROJECT_HEADERS} DESTINATION /include/cppguilded)
 
-add_executable(tests WIN32 MACOSX_BUNDLE tests/main.cpp)
+# WIN32 MACOSX_BUNDLE
+add_executable(tests MACOSX_BUNDLE WIN32 tests/main.cpp)
 
 target_include_directories(tests PRIVATE CPPGuilded)
 

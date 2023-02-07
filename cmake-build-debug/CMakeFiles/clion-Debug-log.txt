@@ -7,7 +7,7 @@ Call Stack (most recent call first):
   /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:2118 (_Boost_MISSING_DEPENDENCIES)
   /Users/ibrahim/vcpkg/installed/arm64-osx/share/boost/vcpkg-cmake-wrapper.cmake:11 (_find_package)
   /Users/ibrahim/vcpkg/scripts/buildsystems/vcpkg.cmake:797 (include)
-  CMakeLists.txt:50 (find_package)
+  CMakeLists.txt:52 (find_package)
 
 
 CMake Warning at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:1384 (message):
@@ -18,7 +18,7 @@ Call Stack (most recent call first):
   /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24/Modules/FindBoost.cmake:2118 (_Boost_MISSING_DEPENDENCIES)
   /Users/ibrahim/vcpkg/installed/arm64-osx/share/boost/vcpkg-cmake-wrapper.cmake:11 (_find_package)
   /Users/ibrahim/vcpkg/scripts/buildsystems/vcpkg.cmake:797 (include)
-  CMakeLists.txt:50 (find_package)
+  CMakeLists.txt:52 (find_package)
 
 
 -- Configuring done

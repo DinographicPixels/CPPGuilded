@@ -15,7 +15,7 @@
 #include "Classes/Message.hpp"
 #include "Classes/Utils.hpp"
 #include "Classes/RequestHandler.hpp"
-#include "Classes/GatewayHandler.hpp"
+#include "Classes/Gateway/GatewayHandler.hpp"
 
 
 namespace beast = boost::beast;
@@ -29,7 +29,7 @@ CPPGuilded::Client::Client(string TOKEN){
     utils = std::make_unique<Utils>();
 	rest = std::make_unique<RequestHandler>(this);
 	log = Utils::Logger("Client | CPPGuilded");
-	this->gatewayHandler = std::make_unique<GatewayHandler>(token);
+	this->gatewayHandler = std::make_shared<GatewayHandler>(this);
 }
 
 bool CPPGuilded::Client::hello(bool sus) {
@@ -51,16 +51,10 @@ bool CPPGuilded::Client::hello(bool sus) {
 
 
 CPPGuilded::Message* CPPGuilded::Client::createMessage(std::string channelID, CreateMessageOptions options) {
-	Message::Embed* messageEmbed = new Message::Embed();
-	messageEmbed->title = "embed testin'";
-	messageEmbed->description = "this is a desc";
-	messageEmbed->url = "https://touchguild.com";
-	messageEmbed->fields = {{"field 1", "value 1", true}};
-	CreateMessageOptions cringe = { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, {messageEmbed} };
-	json jsonOptions = cringe;
-	if (cringe.embeds.size() >= 1){
-		for (auto x: cringe.embeds){
-			json jsonEmbed = x->to_json();
+	json jsonOptions = options;
+	if (options.embeds.size() >= 1){
+		for (auto x: options.embeds){
+			json jsonEmbed = x.to_json();
 			jsonOptions["embeds"].push_back(jsonEmbed);
 		}
 		// json jsonEmbed = json{*messageEmbed};
@@ -73,5 +67,10 @@ CPPGuilded::Message* CPPGuilded::Client::createMessage(std::string channelID, Cr
 }
 void CPPGuilded::Client::connect() {
 	log.info("Connecting..");
-	this->gatewayHandler->connect().get();
+	srand((unsigned int)time(NULL));
+	this->gatewayHandler->connect();
 }
+
+void CPPGuilded::Client::on_message_create(CPPGuilded::Message message) {};
+void CPPGuilded::Client::on_message_update(CPPGuilded::Message message) {};
+void CPPGuilded::Client::on_message_delete(CPPGuilded::Message message) {};
