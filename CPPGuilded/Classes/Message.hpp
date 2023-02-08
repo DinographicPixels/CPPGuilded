@@ -18,28 +18,31 @@ namespace CPPGuilded {
 			  string icon_url;
 			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(footer, icon_url);
 		  };
+		  struct THUMBNAILSTRUCT {
+			  string url;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(thumbnail, url);
+		  };
+		  struct IMAGESTRUCT {
+			  string url;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(image, url);
+		  };
+		  struct AUTHORSTRUCT {
+			  string name;
+			  string url;
+			  string icon_url;
+			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(author, name, url, icon_url);
+		  };
 		public:
 		  string title;
 		  string description;
 		  string url;
 		  int color;
 		  string timestamp;
-		  struct thumbnail {
-			  string url;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(thumbnail, url);
-		  };
-		  struct image {
-			  string url;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(image, url);
-		  };
-		  struct author {
-			  string name;
-			  string url;
-			  string icon_url;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(author, name, url, icon_url);
-		  };
 		  vector<FIELDS_FIELD> fields;
 		  FOOTERSTRUCT footer;
+		  THUMBNAILSTRUCT thumbnail;
+		  IMAGESTRUCT image;
+		  AUTHORSTRUCT author;
 		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(Embed, title, description);
 		  // DLL_EXPORT Embed(string title);
 		  DLL_EXPORT json to_json();

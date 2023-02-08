@@ -97,3 +97,15 @@
 18	2960	1675803665476280372	CMakeFiles/cppguilded.dir/CPPGuilded/library.cpp.o	ebb565bafd404e0f
 2960	3114	1675803665639042594	libcppguilded.dylib	4939697bc0c82e81
 3114	3268	1675803665681844607	tests.app/Contents/MacOS/tests	fd25d3faa0fe17d7
+29	1847	1675835606230916852	CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Utils.cpp.o	dece8015c3a49943
+28	1902	1675835606291911343	CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Threadpool.cpp.o	201e6114bc9b9c8
+24	2230	1675835606617169103	CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Channel.cpp.o	afed94a9f93b32eb
+25	2374	1675835606762196229	CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/Events/MessageHandler.cpp.o	8c6cf907a0085928
+26	3030	1675835607418606764	CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Message.cpp.o	7711811578d01184
+25	3867	1675835608251892674	CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/GatewayHandler.cpp.o	5e483e953515a949
+1903	4000	1675835608388441403	CMakeFiles/tests.dir/tests/main.cpp.o	e5b7087412bb2b17
+1847	5157	1675835609543871607	CMakeFiles/cppguilded.dir/CPPGuilded/library.cpp.o	ebb565bafd404e0f
+27	6342	1675835610726365589	CMakeFiles/cppguilded.dir/CPPGuilded/Classes/RequestHandler.cpp.o	cdadc63ef3317167
+26	11157	1675835615536992184	CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/WSManager.cpp.o	a854d06a59df8a50
+11157	11320	1675835615716005899	libcppguilded.dylib	4939697bc0c82e81
+11320	11651	1675835615759349094	tests.app/Contents/MacOS/tests	fd25d3faa0fe17d7
