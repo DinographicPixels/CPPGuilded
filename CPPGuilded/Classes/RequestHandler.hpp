@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef CPPGUILDED_REQUESTHANDLER_HPP
+#define CPPGUILDED_REQUESTHANDLER_HPP
+
 #include "static.hpp"
 
 
@@ -7,7 +11,7 @@ namespace CPPGuilded {
 	class RequestHandler {
 	  public:
 		struct GuildedHTTPResponse {
-			unsigned int status_code;
+			unsigned int statusCode;
 			std::map<std::string, std::string> headers;
 			std::string body;
 		};
@@ -16,3 +20,5 @@ namespace CPPGuilded {
 		Client* client;
 	};
 }
+
+#endif

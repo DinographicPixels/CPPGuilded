@@ -55,7 +55,7 @@ void CPPGuilded::WSManager::startHeartbeating() {
 	static unsigned int heartbeatIndex = 0;
 	unsigned int taskID = heartbeatIndex++;
 	heartbeat_thread = std::thread([this, taskID] {
-		log.registerThread(std::this_thread::get_id(), "Thread-Heartbeat-" + std::to_string(taskID));
+		log.register_thread(std::this_thread::get_id(), "Thread-Heartbeat-" + std::to_string(taskID));
 		while (heartbeat_interval == 0) {
 			log.debug("waiting heartbeat interval change");
 			std::this_thread::sleep_for(std::chrono::milliseconds(50));

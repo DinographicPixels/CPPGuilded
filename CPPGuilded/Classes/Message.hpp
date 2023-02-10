@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef CPPGUILDED_MESSAGE_HPP
+#define CPPGUILDED_MESSAGE_HPP
+
 #include "static.hpp"
 
 namespace CPPGuilded {
@@ -7,26 +11,26 @@ namespace CPPGuilded {
     public:
 	  class Embed {
 		protected:
-		  struct FIELDS_FIELD {
+		  struct fieldsField {
 			  string name;
 			  string value;
 			  bool isInline;
 			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(fields, name, value);
 		  };
-		  struct FOOTERSTRUCT {
+		  struct footerStruct {
 			  string text;
 			  string icon_url;
 			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(footer, icon_url);
 		  };
-		  struct THUMBNAILSTRUCT {
+		  struct thumbnailStruct {
 			  string url;
 			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(thumbnail, url);
 		  };
-		  struct IMAGESTRUCT {
+		  struct imageStruct {
 			  string url;
 			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(image, url);
 		  };
-		  struct AUTHORSTRUCT {
+		  struct authorStruct {
 			  string name;
 			  string url;
 			  string icon_url;
@@ -38,18 +42,18 @@ namespace CPPGuilded {
 		  string url;
 		  int color;
 		  string timestamp;
-		  vector<FIELDS_FIELD> fields;
-		  FOOTERSTRUCT footer;
-		  THUMBNAILSTRUCT thumbnail;
-		  IMAGESTRUCT image;
-		  AUTHORSTRUCT author;
+		  vector<fieldsField> fields;
+		  footerStruct footer;
+		  thumbnailStruct thumbnail;
+		  imageStruct image;
+          authorStruct author;
 		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(Embed, title, description);
 		  // DLL_EXPORT Embed(string title);
 		  DLL_EXPORT json to_json();
 	  };
         string id;
         string type;
-        string serverID;
+        string guildID;
         string channelID;
         string content;
         vector<Embed> embeds;
@@ -64,3 +68,5 @@ namespace CPPGuilded {
         DLL_EXPORT Message(const json& data, Client* client);
     };
 }
+
+#endif

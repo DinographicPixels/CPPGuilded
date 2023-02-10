@@ -5,7 +5,7 @@
 // #include "library.h"
 using namespace std;
 
-template<class T> T CPPGuilded::Utils::getValue(const json &data, std::string name) {
+template<class T> T CPPGuilded::Utils::get_value(const json &data, std::string name) {
     if (std::is_same<T, string>()){
         return data.value(name, "UNDEFINED");
     }else if (std::is_same<T, int>()){

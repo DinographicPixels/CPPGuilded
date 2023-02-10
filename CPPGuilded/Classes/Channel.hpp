@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef CPPGUILDED_CHANNEL_HPP
+#define CPPGUILDED_CHANNEL_HPP
+
 #include <iostream>
 #include "static.hpp"
 using namespace std;
@@ -21,3 +25,4 @@ namespace CPPGuilded {
     void sus();
 }
 
+#endif

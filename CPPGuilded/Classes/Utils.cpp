@@ -9,12 +9,12 @@ static Loglevel _level = Debug;
 static std::map<std::thread::id, std::string> thread_names;
 static std::mutex log_mutex;
 
-void CPPGuilded::Utils::Logger::registerThread(const thread::id& id, const string& name) {
+void CPPGuilded::Utils::Logger::register_thread(const thread::id& id, const string& name) {
 	std::lock_guard<std::mutex> lock(log_mutex);
 	thread_names.insert_or_assign(id, name);
 }
 
-void CPPGuilded::Utils::Logger::unregisterThread(const thread::id& id) {
+void CPPGuilded::Utils::Logger::unregister_thread(const thread::id& id) {
 	std::lock_guard<std::mutex> lock(log_mutex);
 	thread_names.erase(id);
 }
@@ -28,19 +28,19 @@ void CPPGuilded::Utils::Logger::set_log_level(const Loglevel& level) { _level = 
 
 void CPPGuilded::Utils::Logger::print(const Loglevel level, const std::string& message) {
 	if (level >= _level) {
-		std::string level_name;
+		std::string levelName;
 		switch (level) {
 			case Debug:
-				level_name = "DEBUG";
+				levelName = "DEBUG";
 				break;
 			case Info:
-				level_name = "INFO";
+				levelName = "INFO";
 				break;
 			case Warning:
-				level_name = "WARNING";
+				levelName = "WARNING";
 				break;
 			case Error:
-				level_name = "ERROR";
+				levelName = "ERROR";
 				break;
 			default:
 				break;
@@ -48,7 +48,7 @@ void CPPGuilded::Utils::Logger::print(const Loglevel level, const std::string& m
 
 		std::lock_guard<std::mutex> lock(log_mutex);
 		auto name = thread_names.find(std::this_thread::get_id());
-		std::cout << level_name.c_str() << " - ";
+		std::cout << levelName.c_str() << " - ";
 		if (name != thread_names.end()) {
 			std::cout << name->second;
 		} else {

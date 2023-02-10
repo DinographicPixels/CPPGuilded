@@ -1,4 +1,7 @@
 #pragma once
+#ifndef CPPGUILDED_UTILS_HPP
+#define CPPGUILDED_UTILS_HPP
+
 #include "static.hpp"
 
 #include <iostream>
@@ -20,7 +23,7 @@ namespace CPPGuilded {
 	class Utils {
 	  public:
 		DLL_EXPORT Utils() {};
-		template<typename T> T getValue(const nlohmann::json& data, std::string name) {
+		template<typename T> T get_value(const nlohmann::json& data, std::string name) {
 			if constexpr (std::is_same<T, std::string>()){
 				return data.value(name, "UNDEFINED"); // std::is_same<>();
 			}else if constexpr (std::is_same<T, int>()){
@@ -62,8 +65,8 @@ namespace CPPGuilded {
 			std::string _name;
 
 		  public:
-			DLL_EXPORT void registerThread(const std::thread::id& id, const std::string& name);
-			DLL_EXPORT void unregisterThread(const std::thread::id& id);
+			DLL_EXPORT void register_thread(const std::thread::id& id, const std::string& name);
+			DLL_EXPORT void unregister_thread(const std::thread::id& id);
 
 			DLL_EXPORT static void set_log_level(const Loglevel& level);
 
@@ -79,3 +82,5 @@ namespace CPPGuilded {
 		};
 	};
 }
+
+#endif

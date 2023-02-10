@@ -2,6 +2,9 @@
 #include <exception>
 #include <iostream>
 
+#ifndef CPPGUILDED_EXCEPTIONS_HPP
+#define CPPGUILDED_EXCEPTIONS_HPP
+
 #ifdef _WIN32
 #define DLL_EXPORT __declspec(dllexport)
 #else
@@ -22,10 +25,10 @@ namespace CPPGuilded {
 
     class StatusCodeException : public GuildedException {
     protected:
-        int _error_code;
+        int _errorCode;
 
     public:
-        DLL_EXPORT StatusCodeException(const std::string& what, int error_code);
+        DLL_EXPORT StatusCodeException(const std::string& what, int errorCode);
         DLL_EXPORT virtual ~StatusCodeException();
         DLL_EXPORT int get_error_code() const;
     };
@@ -42,11 +45,13 @@ namespace CPPGuilded {
 
     class OpusError : public StatusCodeException {
     public:
-        DLL_EXPORT OpusError(const std::string& what, int error_code);
+        DLL_EXPORT OpusError(const std::string& what, int errorCode);
     };
 
     class HTTPError : public StatusCodeException {
     public:
-        DLL_EXPORT HTTPError(const std::string& what, int error_code);
+        DLL_EXPORT HTTPError(const std::string& what, int errorCode);
     };
 }
+
+#endif

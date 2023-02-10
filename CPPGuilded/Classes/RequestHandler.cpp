@@ -74,10 +74,10 @@ CPPGuilded::RequestHandler::GuildedHTTPResponse CPPGuilded::RequestHandler::requ
 		throw beast::system_error{errCode};
 	}
 
-	std::map<std::string, std::string> res_headers;
+	std::map<std::string, std::string> resHeaders;
 	for (auto it = res.base().begin(); it != res.base().end(); it++) {
-		res_headers.emplace(it->name_string(), it->value());
+		resHeaders.emplace(it->name_string(), it->value());
 	}
 
-	return GuildedHTTPResponse{res.result_int(), res_headers, res.body()};
+	return GuildedHTTPResponse{res.result_int(), resHeaders, res.body()};
 };

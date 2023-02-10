@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef CPPGUILDED_STATIC_HPP
+#define CPPGUILDED_STATIC_HPP
+
 #ifdef _WIN32
 #define DLL_EXPORT __declspec(dllexport)
 #else
@@ -17,3 +20,5 @@ using json = nlohmann::json;
 using namespace std;
 
 DLL_EXPORT void load_ssl_certificates(boost::asio::ssl::context& ssl_context);
+
+#endif

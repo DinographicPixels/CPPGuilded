@@ -7,20 +7,20 @@
 #include "library.hpp"
 
 CPPGuilded::Message::Message(const json &data, Client* client) {
-    id = client->utils->getValue<std::string>(data, "id");
-    type = client->utils->getValue<std::string>(data, "type");
-    serverID = client->utils->getValue<std::string>(data, "serverId");
-    channelID = client->utils->getValue<std::string>(data, "chnannelId");
-    content = client->utils->getValue<std::string>(data, "content");
-    embeds = client->utils->getValue<vector<Embed>>(data, "embeds");
-    replyMessageIDs = client->utils->getValue<vector<string>>(data, "replyMessageIds");
-    isPrivate = client->utils->getValue<bool>(data, "isPrivate");
-    isSilent = client->utils->getValue<bool>(data, "isSilent");
-    mentions = client->utils->getValue<std::string>(data, "mentions");
-    createdAt = client->utils->getValue<std::string>(data, "createdAt");
-    createdBy = client->utils->getValue<std::string>(data, "createdBy");
-    createdByWebhookID = client->utils->getValue<std::string>(data, "createdByWebhookId");
-    updatedAt = client->utils->getValue<std::string>(data, "updatedAt");
+    id = client->utils->get_value<std::string>(data, "id");
+    type = client->utils->get_value<std::string>(data, "type");
+    guildID = client->utils->get_value<std::string>(data, "serverId");
+    channelID = client->utils->get_value<std::string>(data, "channelId");
+    content = client->utils->get_value<std::string>(data, "content");
+    embeds = client->utils->get_value<vector<Embed>>(data, "embeds");
+    replyMessageIDs = client->utils->get_value<vector<string>>(data, "replyMessageIds");
+    isPrivate = client->utils->get_value<bool>(data, "isPrivate");
+    isSilent = client->utils->get_value<bool>(data, "isSilent");
+    mentions = client->utils->get_value<std::string>(data, "mentions");
+    createdAt = client->utils->get_value<std::string>(data, "createdAt");
+    createdBy = client->utils->get_value<std::string>(data, "createdBy");
+    createdByWebhookID = client->utils->get_value<std::string>(data, "createdByWebhookId");
+    updatedAt = client->utils->get_value<std::string>(data, "updatedAt");
 }
 
 json CPPGuilded::Message::Embed::to_json() {

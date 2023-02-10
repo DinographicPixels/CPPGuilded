@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef CPPGUILDED_THREADPOOL_HPP
+#define CPPGUILDED_THREADPOOL_HPP
+
 #include <condition_variable>
 #include <functional>
 #include <future>
@@ -135,3 +138,5 @@ namespace CPPGuilded {
 	};
 
 }
+
+#endif

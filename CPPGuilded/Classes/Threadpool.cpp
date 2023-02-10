@@ -53,11 +53,11 @@ void CPPGuilded::Threadpool::start_thread() {
 			}
 
 			std::cout << "Thread closed" << std::endl;
-			log.unregisterThread(std::this_thread::get_id());
+            log.unregister_thread(std::this_thread::get_id());
 		});
 
-	log.registerThread(thread.get_id(), "Threadpool-" + std::to_string(threadpool_id) +
-			"-Thread-" + std::to_string(thread_count));
+    log.register_thread(thread.get_id(), "Threadpool-" + std::to_string(threadpool_id) +
+                                         "-Thread-" + std::to_string(thread_count));
 
 	threads.push_back(std::move(thread));
 
