@@ -1,3 +1,8 @@
+//
+// Created by PakkoGraphic.
+// Copyright (c) 2023 DinographicPixels. All rights reserved.
+//
+
 #include "Member.hpp"
 #include <iostream>
 #include "static.hpp"

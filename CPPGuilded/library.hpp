@@ -1,3 +1,8 @@
+//
+// Created by PakkoGraphic.
+// Copyright (c) 2023 DinographicPixels. All rights reserved.
+//
+
 #pragma once
 #include <iostream>
 #include <map>

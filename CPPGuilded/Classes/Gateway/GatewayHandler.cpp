@@ -1,3 +1,8 @@
+//
+// Created by PakkoGraphic.
+// Copyright (c) 2023 DinographicPixels. All rights reserved.
+//
+
 #include "GatewayHandler.hpp"
 #include "static.hpp"
 

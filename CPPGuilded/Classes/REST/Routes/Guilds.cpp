@@ -1,3 +1,8 @@
+//
+// Created by PakkoGraphic on 2/10/2023.
+// Copyright (c) 2023 DinographicPixels. All rights reserved.
+//
+
 #include "Guilds.hpp"
 #include <iostream>
 #include "static.hpp"

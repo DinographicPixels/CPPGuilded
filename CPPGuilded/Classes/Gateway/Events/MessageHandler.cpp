@@ -1,3 +1,8 @@
+//
+// Created by PakkoGraphic.
+// Copyright (c) 2023 DinographicPixels. All rights reserved.
+//
+
 #include "MessageHandler.hpp"
 #include "static.hpp"
 #include "library.hpp"
