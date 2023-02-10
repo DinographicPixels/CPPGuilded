@@ -1,2 +1,7 @@
-
 .DS_Store
+_deps/
+.cmake/
+.idea/
+CMakeFiles/
+coverage/
+cmake-build-debug/
