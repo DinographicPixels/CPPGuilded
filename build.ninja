@@ -102,6 +102,30 @@ build CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Message.cpp.o: CXX_COMPILER__
   OBJECT_DIR = CMakeFiles/cppguilded.dir
   OBJECT_FILE_DIR = CMakeFiles/cppguilded.dir/CPPGuilded/Classes
 
+build CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/RESTManager.cpp.o: CXX_COMPILER__cppguilded_Debug /Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/REST/RESTManager.cpp || cmake_object_order_depends_target_cppguilded
+  DEFINES = -DSODIUM_STATIC -Dcppguilded_EXPORTS
+  DEP_FILE = CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/RESTManager.cpp.o.d
+  FLAGS = -Wall -Wextra -Ofast -pthread  -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics -pthread -std=gnu++17
+  INCLUDES = -I/Users/ibrahim/CLionProjects/CPPGuilded/_deps/certify-src/include -I/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded -I/Users/ibrahim/CLionProjects/CPPGuilded/_deps/nlohmann_json-src/include -isystem /Users/ibrahim/vcpkg/installed/arm64-osx/include -isystem /Users/ibrahim/vcpkg/installed/arm64-osx/include/opus
+  OBJECT_DIR = CMakeFiles/cppguilded.dir
+  OBJECT_FILE_DIR = CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST
+
+build CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/Routes/Channels.cpp.o: CXX_COMPILER__cppguilded_Debug /Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/REST/Routes/Channels.cpp || cmake_object_order_depends_target_cppguilded
+  DEFINES = -DSODIUM_STATIC -Dcppguilded_EXPORTS
+  DEP_FILE = CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/Routes/Channels.cpp.o.d
+  FLAGS = -Wall -Wextra -Ofast -pthread  -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics -pthread -std=gnu++17
+  INCLUDES = -I/Users/ibrahim/CLionProjects/CPPGuilded/_deps/certify-src/include -I/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded -I/Users/ibrahim/CLionProjects/CPPGuilded/_deps/nlohmann_json-src/include -isystem /Users/ibrahim/vcpkg/installed/arm64-osx/include -isystem /Users/ibrahim/vcpkg/installed/arm64-osx/include/opus
+  OBJECT_DIR = CMakeFiles/cppguilded.dir
+  OBJECT_FILE_DIR = CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/Routes
+
+build CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/Routes/Guilds.cpp.o: CXX_COMPILER__cppguilded_Debug /Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/REST/Routes/Guilds.cpp || cmake_object_order_depends_target_cppguilded
+  DEFINES = -DSODIUM_STATIC -Dcppguilded_EXPORTS
+  DEP_FILE = CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/Routes/Guilds.cpp.o.d
+  FLAGS = -Wall -Wextra -Ofast -pthread  -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -fPIC -fcolor-diagnostics -pthread -std=gnu++17
+  INCLUDES = -I/Users/ibrahim/CLionProjects/CPPGuilded/_deps/certify-src/include -I/Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded -I/Users/ibrahim/CLionProjects/CPPGuilded/_deps/nlohmann_json-src/include -isystem /Users/ibrahim/vcpkg/installed/arm64-osx/include -isystem /Users/ibrahim/vcpkg/installed/arm64-osx/include/opus
+  OBJECT_DIR = CMakeFiles/cppguilded.dir
+  OBJECT_FILE_DIR = CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/Routes
+
 build CMakeFiles/cppguilded.dir/CPPGuilded/Classes/RequestHandler.cpp.o: CXX_COMPILER__cppguilded_Debug /Users/ibrahim/CLionProjects/CPPGuilded/CPPGuilded/Classes/RequestHandler.cpp || cmake_object_order_depends_target_cppguilded
   DEFINES = -DSODIUM_STATIC -Dcppguilded_EXPORTS
   DEP_FILE = CMakeFiles/cppguilded.dir/CPPGuilded/Classes/RequestHandler.cpp.o.d
@@ -158,7 +182,7 @@ build CMakeFiles/cppguilded.dir/CPPGuilded/static.cpp.o: CXX_COMPILER__cppguilde
 #############################################
 # Link the shared library libcppguilded.dylib
 
-build libcppguilded.dylib: CXX_SHARED_LIBRARY_LINKER__cppguilded_Debug CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Channel.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Exceptions.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/Events/MessageHandler.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/GatewayHandler.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/WSManager.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Member.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Message.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/RequestHandler.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Threadpool.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/User.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Utils.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/library.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/static.cpp.o | /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libsodium.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libopus.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libboost_system.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libboost_filesystem.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libssl.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libcrypto.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libz.a
+build libcppguilded.dylib: CXX_SHARED_LIBRARY_LINKER__cppguilded_Debug CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Channel.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Exceptions.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/Events/MessageHandler.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/GatewayHandler.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Gateway/WSManager.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Member.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Message.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/RESTManager.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/Routes/Channels.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/REST/Routes/Guilds.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/RequestHandler.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Threadpool.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/User.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/Classes/Utils.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/library.cpp.o CMakeFiles/cppguilded.dir/CPPGuilded/static.cpp.o | /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libsodium.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libopus.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libboost_system.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libboost_filesystem.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libssl.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libcrypto.a /Users/ibrahim/vcpkg/installed/arm64-osx/debug/lib/libz.a
   ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk
   INSTALLNAME_DIR = @rpath/
   LANGUAGE_COMPILE_FLAGS = -Wall -Wextra -Ofast -pthread  -g
