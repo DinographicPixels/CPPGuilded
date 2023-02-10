@@ -1,3 +1,0 @@
-/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/CMakeFiles/boost_beast-populate.dir
-/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/CMakeFiles/edit_cache.dir
-/Users/ibrahim/CLionProjects/CPPGuilded/cmake-build-debug/_deps/boost_beast-subbuild/CMakeFiles/rebuild_cache.dir
