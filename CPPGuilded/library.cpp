@@ -85,6 +85,17 @@ CPPGuilded::Member CPPGuilded::Client::get_member(std::string guildID, std::stri
 	return rest->guilds->get_member(guildID, memberID);
 }
 
+CPPGuilded::Message CPPGuilded::Client::get_message(std::string channelID, std::string messageID)
+{
+	return rest->channels->get_message(channelID, messageID);
+}
+
+std::vector<CPPGuilded::Message> CPPGuilded::Client::get_messages(std::string channelID,
+	CPPGuilded::Channels::GetChannelMessagesFilter filter)
+{
+	return rest->channels->get_messages(channelID, filter);
+}
+
 
 void CPPGuilded::Client::on_message_create(CPPGuilded::Message message) {};
 void CPPGuilded::Client::on_message_update(CPPGuilded::Message message) {};

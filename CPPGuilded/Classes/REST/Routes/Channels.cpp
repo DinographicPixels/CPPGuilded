@@ -47,3 +47,19 @@ CPPGuilded::Message CPPGuilded::Channels::edit_message(std::string channelID, st
 void CPPGuilded::Channels::delete_message(std::string channelID, std::string messageID) {
 	manager->request("DELETE", "/channels/" + channelID + "/messages/" + messageID);
 }
+
+CPPGuilded::Message CPPGuilded::Channels::get_message(std::string channelID, std::string messageID) {
+	RequestHandler::GuildedHTTPResponse req = manager->request("GET", "/channels/" + channelID + "/messages/" + messageID);
+	json res = json::parse(req.body).at("message");
+	return Message(res, client);
+}
+
+std::vector<CPPGuilded::Message> CPPGuilded::Channels::get_messages(std::string channelID, GetChannelMessagesFilter filter) {
+	RequestHandler::GuildedHTTPResponse req = manager->request("GET", "/channels/" + channelID + "/messages");
+	json res = json::parse(req.body).at("messages");
+	std::vector<CPPGuilded::Message> messages;
+	for (json jsonMsg: res){
+		messages.push_back(Message(jsonMsg, client));
+	}
+	return messages;
+}

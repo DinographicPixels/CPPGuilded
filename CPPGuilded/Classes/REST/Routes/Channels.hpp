@@ -33,11 +33,20 @@ namespace CPPGuilded {
 			vector<Message::Embed> embeds;
 			NLOHMANN_DEFINE_TYPE_INTRUSIVE(EditMessageOptions, content);
 		};
+		struct GetChannelMessagesFilter {
+			std::string before;
+			std::string after;
+			int limit;
+			bool includePrivate;
+			NLOHMANN_DEFINE_TYPE_INTRUSIVE(GetChannelMessagesFilter, before, after, limit, includePrivate);
+		};
 
 		Channels(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager);
 		CPPGuilded::Message create_message(std::string channelID, CreateMessageOptions options);
 		CPPGuilded::Message edit_message(std::string channelID, std::string messageID, EditMessageOptions options);
 		void delete_message(std::string channelID, std::string messageID);
+		CPPGuilded::Message get_message(std::string channelID, std::string messageID);
+		std::vector<CPPGuilded::Message> get_messages(std::string channelID, GetChannelMessagesFilter filter);
 	};
 }
 

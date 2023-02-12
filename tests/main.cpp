@@ -33,14 +33,54 @@ class BotClient: public Client {
 			"https://www.guilded.gg/asset/Default/Gil-md.png"
 		};
 
-		CPPGuilded::Member messageAuthor = this->get_member(message.guildID, message.createdBy);
+		CPPGuilded::Member messageAuthor = get_member_test(message);
 		if (messageAuthor.type == "bot") return;
-		Message greetingMessage = this->create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi" });
-		this->create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, {messageEmbed }});
+
+		Message greetingMessage = message_create_test();
+		advanced_message_create_test(messageEmbed);
 		this_thread::sleep_for(chrono::seconds(1));
-		this->edit_message(greetingMessage.channelID, greetingMessage.id, { "bye!" });
+
+		edit_message_test(greetingMessage);
 		this_thread::sleep_for(chrono::seconds(1));
+
+		get_message_test(greetingMessage);
+		this_thread::sleep_for(chrono::seconds(1));
+
+		delete_message_test(greetingMessage);
+		this_thread::sleep_for(chrono::seconds(1));
+
+		get_messages_test(greetingMessage);
+		this_thread::sleep_for(chrono::seconds(1));
+	}
+
+	Message message_create_test() {
+		return this->create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi" });
+	}
+
+	Message advanced_message_create_test(CPPGuilded::Message::Embed messageEmbed) {
+		return this->create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, { messageEmbed }});
+	}
+
+	Message edit_message_test(Message greetingMessage) {
+		return this->edit_message(greetingMessage.channelID, greetingMessage.id, { "bye!" });
+	}
+
+	void delete_message_test(Message greetingMessage) {
 		this->delete_message(greetingMessage.channelID, greetingMessage.id);
+	}
+
+	void get_message_test(Message greetingMessage) {
+		Message fetchMessage = this->get_message(greetingMessage.channelID, greetingMessage.id);
+		std::cout << "fetchMessage: " << fetchMessage.id << std::endl;
+	}
+
+	void get_messages_test(Message greetingMessage) {
+		std::vector<Message> fetchMessages = this->get_messages(greetingMessage.channelID, {});
+		std::cout << "fetchMESSAGES: " << fetchMessages.size() << std::endl;
+	}
+
+	Member get_member_test(Message message) {
+		return this->get_member(message.guildID, message.createdBy);
 	}
 };
 

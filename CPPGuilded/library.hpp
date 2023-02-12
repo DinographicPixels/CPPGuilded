@@ -52,6 +52,8 @@ namespace CPPGuilded {
 		DLL_EXPORT CPPGuilded::Message edit_message(std::string channelID, std::string messageID, CPPGuilded::Channels::EditMessageOptions options);
 		DLL_EXPORT void delete_message(std::string channelID, std::string messageID);
 		DLL_EXPORT CPPGuilded::Member get_member(std::string guildID, std::string memberID);
+		DLL_EXPORT CPPGuilded::Message get_message(std::string channelID, std::string messageID);
+		DLL_EXPORT std::vector<CPPGuilded::Message> get_messages(std::string channelID, CPPGuilded::Channels::GetChannelMessagesFilter filter);
     };
 }
 
