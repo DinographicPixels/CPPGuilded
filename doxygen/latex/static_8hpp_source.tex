@@ -1,0 +1,35 @@
+\hypertarget{static_8hpp_source}{}\doxysection{static.\+hpp}
+\label{static_8hpp_source}\index{CPPGuilded/static.hpp@{CPPGuilded/static.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ PakkoGraphic.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Copyright\ (c)\ 2023\ DinographicPixels.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CPPGUILDED\_STATIC\_HPP}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CPPGUILDED\_STATIC\_HPP}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ DLL\_EXPORT\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ DLL\_EXPORT}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <boost/asio/ssl/context.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <exception>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ GUILDED\_HOST\ "{}www.guilded.gg"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ GUILDED\_APIVERSION\ 1}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{using\ }json\ =\ nlohmann::json;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ DLL\_EXPORT\ \textcolor{keywordtype}{void}\ load\_ssl\_certificates(boost::asio::ssl::context\&\ ssl\_context);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

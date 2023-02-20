@@ -3,6 +3,8 @@
 // Copyright (c) 2023 DinographicPixels. All rights reserved.
 //
 
+#pragma once
+
 #ifndef CPPGUILDED_DEFINITIONS_HPP
 #define CPPGUILDED_DEFINITIONS_HPP
 

@@ -1,0 +1,66 @@
+\hypertarget{_definitions_8hpp_source}{}\doxysection{Definitions.\+hpp}
+\label{_definitions_8hpp_source}\index{CPPGuilded/Classes/REST/Definitions.hpp@{CPPGuilded/Classes/REST/Definitions.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ PakkoGraphic\ on\ 2/20/23.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Copyright\ (c)\ 2023\ DinographicPixels.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CPPGUILDED\_DEFINITIONS\_HPP}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CPPGUILDED\_DEFINITIONS\_HPP}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}static.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }CPPGuilded\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }Embed;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_method_options}{MethodOptions}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_create_message}{CreateMessage}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ content;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ vector<string>\ replyMessageIds;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isPrivate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isSilent\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ vector<Embed>\ embeds;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_DEFINE\_TYPE\_INTRUSIVE(\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_create_message}{CreateMessage}},\ content,\ replyMessageIds,\ isPrivate,\ isSilent);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_edit_message}{EditMessage}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ content;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ vector<Embed>\ embeds;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_DEFINE\_TYPE\_INTRUSIVE(\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_edit_message}{EditMessage}},\ content);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_create_channel}{CreateChannel}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ topic;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isPublic;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ type;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ serverId;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ groupId;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ categoryId;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_DEFINE\_TYPE\_INTRUSIVE(\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_create_channel}{CreateChannel}},\ topic,\ isPublic,\ serverId,\ groupId,\ categoryId);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_edit_channel}{EditChannel}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ topic;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isPublic;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_DEFINE\_TYPE\_INTRUSIVE(\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_edit_channel}{EditChannel}},\ name,\ topic,\ isPublic);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_method_filters}{MethodFilters}}\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_filters_1_1_get_channel_messages}{GetChannelMessages}}\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ before;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ after;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ limit;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ includePrivate;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ NLOHMANN\_DEFINE\_TYPE\_INTRUSIVE(\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_filters_1_1_get_channel_messages}{GetChannelMessages}},\ before,\ after,\ limit,\ includePrivate);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00057\ \ \ \ \ \};}
+\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//CPPGUILDED\_DEFINITIONS\_HPP}}
+
+\end{DoxyCode}

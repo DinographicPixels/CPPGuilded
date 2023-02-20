@@ -106,3 +106,6 @@ CPPGuilded::User CPPGuilded::Client::get_user(const std::string& userID)
 void CPPGuilded::Client::on_message_create(CPPGuilded::Message message) {};
 void CPPGuilded::Client::on_message_update(CPPGuilded::Message message) {};
 void CPPGuilded::Client::on_message_delete(CPPGuilded::Message message) {};
+void CPPGuilded::Client::on_channel_create(CPPGuilded::Channel channel) {};
+void CPPGuilded::Client::on_channel_update(CPPGuilded::Channel channel) {};
+void CPPGuilded::Client::on_channel_delete(CPPGuilded::Channel channel) {};

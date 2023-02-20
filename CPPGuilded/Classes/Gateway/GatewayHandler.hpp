@@ -8,12 +8,14 @@
 #include "static.hpp"
 #include "Classes/Gateway/WSManager.hpp"
 #include "Classes/Gateway/Events/MessageHandler.hpp"
+#include "Classes/Gateway/Events/ChannelHandler.hpp"
 #include "library.hpp"
 
 namespace CPPGuilded {
 	class GatewayHandler: public WSManager {
 	  protected:
 		std::unique_ptr<CPPGuilded::MessageHandler> message_handler;
+		std::unique_ptr<CPPGuilded::ChannelHandler> channel_handler;
 	  public:
 		Client* client;
 		DLL_EXPORT GatewayHandler(Client* client);

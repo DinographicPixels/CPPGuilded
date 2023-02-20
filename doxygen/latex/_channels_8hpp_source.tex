@@ -1,0 +1,42 @@
+\hypertarget{_channels_8hpp_source}{}\doxysection{Channels.\+hpp}
+\label{_channels_8hpp_source}\index{CPPGuilded/Classes/REST/Routes/Channels.hpp@{CPPGuilded/Classes/REST/Routes/Channels.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ PakkoGraphic\ on\ 2/10/2023.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Copyright\ (c)\ 2023\ DinographicPixels.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CPPGUILDED\_CHANNELS\_HPP}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CPPGUILDED\_CHANNELS\_HPP}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}static.hpp"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Classes/Message.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Classes/Channel.hpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }CPPGuilded\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{class\ }Client;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }RequestHandler;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_channels}{Channels}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_p_p_guilded_1_1_client}{CPPGuilded::Client}}*\ client;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::shared\_ptr<CPPGuilded::RequestHandler>\ manager;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_p_p_guilded_1_1_channels}{Channels}}(\mbox{\hyperlink{class_c_p_p_guilded_1_1_client}{CPPGuilded::Client}}*\ client,\ std::shared\_ptr<CPPGuilded::RequestHandler>\ manager);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_p_p_guilded_1_1_message}{CPPGuilded::Message}}\ create\_message(std::string\ channelID,\ \mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_create_message}{MethodOptions::CreateMessage}}\ options);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_p_p_guilded_1_1_message}{CPPGuilded::Message}}\ edit\_message(std::string\ channelID,\ std::string\ messageID,\ \mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_edit_message}{MethodOptions::EditMessage}}\ options);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ delete\_message(std::string\ channelID,\ std::string\ messageID);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_p_p_guilded_1_1_message}{CPPGuilded::Message}}\ get\_message(std::string\ channelID,\ std::string\ messageID);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::vector<CPPGuilded::Message>\ get\_messages(std::string\ channelID,\ \mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_filters_1_1_get_channel_messages}{MethodFilters::GetChannelMessages}}\ filter);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_p_p_guilded_1_1_channel}{CPPGuilded::Channel}}\ create\_channel(\mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_create_channel}{MethodOptions::CreateChannel}}\ options);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_p_p_guilded_1_1_channel}{CPPGuilded::Channel}}\ edit\_channel(std::string\ channelID,\ \mbox{\hyperlink{struct_c_p_p_guilded_1_1_method_options_1_1_edit_channel}{MethodOptions::EditChannel}}\ options);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ delete\_channel(std::string\ channelID);}
+\DoxyCodeLine{00033\ \ \ \ \ \};}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

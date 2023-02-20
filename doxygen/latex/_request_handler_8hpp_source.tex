@@ -1,0 +1,35 @@
+\hypertarget{_request_handler_8hpp_source}{}\doxysection{Request\+Handler.\+hpp}
+\label{_request_handler_8hpp_source}\index{CPPGuilded/Classes/RequestHandler.hpp@{CPPGuilded/Classes/RequestHandler.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ PakkoGraphic.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Copyright\ (c)\ 2023\ DinographicPixels.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CPPGUILDED\_REQUESTHANDLER\_HPP}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CPPGUILDED\_REQUESTHANDLER\_HPP}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}static.hpp"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }CPPGuilded\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }Client;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_request_handler}{RequestHandler}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_p_p_guilded_1_1_request_handler_1_1_guilded_h_t_t_p_response}{GuildedHTTPResponse}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ statusCode;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ std::map<std::string,\ std::string>\ headers;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ body;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_p_p_guilded_1_1_request_handler_1_1_guilded_h_t_t_p_response}{GuildedHTTPResponse}}\ request(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ method,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ target,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ data\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_request_handler}{RequestHandler}}(\mbox{\hyperlink{class_c_p_p_guilded_1_1_client}{Client}}*\ client);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_c_p_p_guilded_1_1_client}{Client}}*\ client;}
+\DoxyCodeLine{00026\ \ \ \ \ \};}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

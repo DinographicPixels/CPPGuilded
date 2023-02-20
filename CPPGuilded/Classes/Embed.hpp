@@ -3,6 +3,8 @@
 // Copyright (c) 2023 DinographicPixels. All rights reserved.
 //
 
+#pragma once
+
 #ifndef CPPGUILDED_EMBED_HPP
 #define CPPGUILDED_EMBED_HPP
 

@@ -1,0 +1,115 @@
+\hypertarget{class_c_p_p_guilded_1_1_threadpool}{}\doxysection{CPPGuilded\+::Threadpool Class Reference}
+\label{class_c_p_p_guilded_1_1_threadpool}\index{CPPGuilded::Threadpool@{CPPGuilded::Threadpool}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+DLL\+\_\+\+EXPORT \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool_ae412738b895ed9cb87607ad2468da036}{Threadpool}} (const unsigned int size=4)
+\item 
+\mbox{\Hypertarget{class_c_p_p_guilded_1_1_threadpool_a359a66f6078cc60c5c80b2a0973402e4}\label{class_c_p_p_guilded_1_1_threadpool_a359a66f6078cc60c5c80b2a0973402e4}} 
+{\bfseries Threadpool} (const \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool}{Threadpool}} \&)=delete
+\item 
+{\footnotesize template$<$typename F , typename R  = std\+::invoke\+\_\+result\+\_\+t$<$std\+::decay\+\_\+t$<$\+F$>$$>$, typename  = std\+::enable\+\_\+if\+\_\+t$<$!std\+::is\+\_\+void\+\_\+v$<$\+R$>$$>$$>$ }\\DLL\+\_\+\+EXPORT std\+::shared\+\_\+future$<$ R $>$ \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool_a845de72f02aa55ec8ca2ae1fb3909007}{execute}} (F \&\&task)
+\item 
+{\footnotesize template$<$typename F , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+void\+\_\+v$<$std\+::invoke\+\_\+result\+\_\+t$<$std\+::decay\+\_\+t$<$\+F$>$$>$$>$$>$$>$ }\\DLL\+\_\+\+EXPORT std\+::shared\+\_\+future$<$ void $>$ \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool_a5ff49d46d030c2c6feae67682bdd36d5}{execute}} (F \&\&task)
+\item 
+{\footnotesize template$<$typename F , typename T , typename R  = std\+::invoke\+\_\+result\+\_\+t$<$std\+::decay\+\_\+t$<$\+T$>$, std\+::decay\+\_\+t$<$\+F$>$$>$$>$ }\\DLL\+\_\+\+EXPORT std\+::shared\+\_\+future$<$ R $>$ \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool_a28d4e6e4ab9b4f1eaa1622fb53ac8b31}{then}} (std\+::shared\+\_\+future$<$ F $>$ \&future, T \&\&task)
+\item 
+{\footnotesize template$<$typename T , typename R  = std\+::invoke\+\_\+result\+\_\+t$<$std\+::decay\+\_\+t$<$\+T$>$$>$$>$ }\\DLL\+\_\+\+EXPORT std\+::shared\+\_\+future$<$ R $>$ \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool_a3746a8de90eeac2a4eec8ca327d35473}{then}} (std\+::shared\+\_\+future$<$ void $>$ \&future, T \&\&task)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_p_p_guilded_1_1_threadpool_ae412738b895ed9cb87607ad2468da036}\label{class_c_p_p_guilded_1_1_threadpool_ae412738b895ed9cb87607ad2468da036}} 
+\index{CPPGuilded::Threadpool@{CPPGuilded::Threadpool}!Threadpool@{Threadpool}}
+\index{Threadpool@{Threadpool}!CPPGuilded::Threadpool@{CPPGuilded::Threadpool}}
+\doxysubsubsection{\texorpdfstring{Threadpool()}{Threadpool()}}
+{\footnotesize\ttfamily CPPGuilded\+::\+Threadpool\+::\+Threadpool (\begin{DoxyParamCaption}\item[{const unsigned int}]{size = {\ttfamily 4} }\end{DoxyParamCaption})}
+
+Creates a new \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool}{Threadpool}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em size} & (optional) The number of threads the threadpool should contain. Defaults to 4. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_p_p_guilded_1_1_threadpool_a845de72f02aa55ec8ca2ae1fb3909007}\label{class_c_p_p_guilded_1_1_threadpool_a845de72f02aa55ec8ca2ae1fb3909007}} 
+\index{CPPGuilded::Threadpool@{CPPGuilded::Threadpool}!execute@{execute}}
+\index{execute@{execute}!CPPGuilded::Threadpool@{CPPGuilded::Threadpool}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename F , typename R  = std\+::invoke\+\_\+result\+\_\+t$<$std\+::decay\+\_\+t$<$\+F$>$$>$, typename  = std\+::enable\+\_\+if\+\_\+t$<$!std\+::is\+\_\+void\+\_\+v$<$\+R$>$$>$$>$ \\
+DLL\+\_\+\+EXPORT std\+::shared\+\_\+future$<$ R $>$ CPPGuilded\+::\+Threadpool\+::execute (\begin{DoxyParamCaption}\item[{F \&\&}]{task }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Executes a function on the \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool}{Threadpool}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em task} & function to be executed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+shared future that will contain the result produced by task. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_p_p_guilded_1_1_threadpool_a5ff49d46d030c2c6feae67682bdd36d5}\label{class_c_p_p_guilded_1_1_threadpool_a5ff49d46d030c2c6feae67682bdd36d5}} 
+\index{CPPGuilded::Threadpool@{CPPGuilded::Threadpool}!execute@{execute}}
+\index{execute@{execute}!CPPGuilded::Threadpool@{CPPGuilded::Threadpool}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename F , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+void\+\_\+v$<$std\+::invoke\+\_\+result\+\_\+t$<$std\+::decay\+\_\+t$<$\+F$>$$>$$>$$>$$>$ \\
+DLL\+\_\+\+EXPORT std\+::shared\+\_\+future$<$ void $>$ CPPGuilded\+::\+Threadpool\+::execute (\begin{DoxyParamCaption}\item[{F \&\&}]{task }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Executes a function on the \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool}{Threadpool}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em task} & function to be executed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+shared future that will contain the result produced by task. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_p_p_guilded_1_1_threadpool_a28d4e6e4ab9b4f1eaa1622fb53ac8b31}\label{class_c_p_p_guilded_1_1_threadpool_a28d4e6e4ab9b4f1eaa1622fb53ac8b31}} 
+\index{CPPGuilded::Threadpool@{CPPGuilded::Threadpool}!then@{then}}
+\index{then@{then}!CPPGuilded::Threadpool@{CPPGuilded::Threadpool}}
+\doxysubsubsection{\texorpdfstring{then()}{then()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename F , typename T , typename R  = std\+::invoke\+\_\+result\+\_\+t$<$std\+::decay\+\_\+t$<$\+T$>$, std\+::decay\+\_\+t$<$\+F$>$$>$$>$ \\
+DLL\+\_\+\+EXPORT std\+::shared\+\_\+future$<$ R $>$ CPPGuilded\+::\+Threadpool\+::then (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+future$<$ F $>$ \&}]{future,  }\item[{T \&\&}]{task }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Executes a function on the \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool}{Threadpool}} after future has been resolved.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em future} & shared future that will be awaited first. \\
+\hline
+\mbox{\texttt{ in}}  & {\em task} & function to be executed. The result of future is passed to task. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+shared future that will contain the result produced by task. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_p_p_guilded_1_1_threadpool_a3746a8de90eeac2a4eec8ca327d35473}\label{class_c_p_p_guilded_1_1_threadpool_a3746a8de90eeac2a4eec8ca327d35473}} 
+\index{CPPGuilded::Threadpool@{CPPGuilded::Threadpool}!then@{then}}
+\index{then@{then}!CPPGuilded::Threadpool@{CPPGuilded::Threadpool}}
+\doxysubsubsection{\texorpdfstring{then()}{then()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename R  = std\+::invoke\+\_\+result\+\_\+t$<$std\+::decay\+\_\+t$<$\+T$>$$>$$>$ \\
+DLL\+\_\+\+EXPORT std\+::shared\+\_\+future$<$ R $>$ CPPGuilded\+::\+Threadpool\+::then (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+future$<$ void $>$ \&}]{future,  }\item[{T \&\&}]{task }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Executes a function on the \mbox{\hyperlink{class_c_p_p_guilded_1_1_threadpool}{Threadpool}} after future has been resolved.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em future} & shared future that will be awaited first. \\
+\hline
+\mbox{\texttt{ in}}  & {\em task} & function to be executed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+shared future that will contain the result produced by task. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+CPPGuilded/\+Classes/Threadpool.\+hpp\item 
+CPPGuilded/\+Classes/Threadpool.\+cpp\end{DoxyCompactItemize}

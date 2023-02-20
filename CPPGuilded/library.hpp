@@ -66,6 +66,8 @@ namespace CPPGuilded {
 		 * This method is used to connect your bot to the Guilded API.
 		 */
 		DLL_EXPORT void connect();
+
+
 		// EVENTS
 		/**
 		 * Event fired when a channel message is created.
@@ -82,6 +84,22 @@ namespace CPPGuilded {
 		 * @param message Deleted message.
 		 */
 		DLL_EXPORT virtual void on_message_delete(CPPGuilded::Message message);
+		/**
+		 * Event fired when a channel is created.
+		 * @param channel Created channel.
+		 */
+		DLL_EXPORT virtual void on_channel_create(CPPGuilded::Channel channel);
+		/**
+		 * Event fired when a channel is edited.
+		 * @param channel Updated channel.
+		 */
+		DLL_EXPORT virtual void on_channel_update(CPPGuilded::Channel channel);
+		/**
+		 * Event fired when a channel is deleted.
+		 * @param channel Deleted channel.
+		 */
+		DLL_EXPORT virtual void on_channel_delete(CPPGuilded::Channel channel);
+
 		// METHODS
 		/**
 		 * Create a message in a chat channel.

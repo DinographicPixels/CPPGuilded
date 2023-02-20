@@ -1,0 +1,97 @@
+\hypertarget{_utils_8hpp_source}{}\doxysection{Utils.\+hpp}
+\label{_utils_8hpp_source}\index{CPPGuilded/Classes/Utils.hpp@{CPPGuilded/Classes/Utils.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ PakkoGraphic.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Copyright\ (c)\ 2023\ DinographicPixels.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ CPPGUILDED\_UTILS\_HPP}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ CPPGUILDED\_UTILS\_HPP}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}static.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Classes/Embed.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum}\ Loglevel\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ Debug,}
+\DoxyCodeLine{00022\ \ \ \ \ Info,}
+\DoxyCodeLine{00023\ \ \ \ \ Warning,}
+\DoxyCodeLine{00024\ \ \ \ \ Error}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }CPPGuilded\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_utils}{Utils}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_utils}{Utils}}()\ \{\};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>\ T\ get\_value(\textcolor{keyword}{const}\ nlohmann::json\&\ data,\ std::string\ name)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same<T,\ std::string>())\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.value(name,\ \textcolor{stringliteral}{"{}UNDEFINED"{}});\ \textcolor{comment}{//\ std::is\_same<>();}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same<T,\ int>())\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.value(name,\ 0);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same<T,\ bool>())\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.value(name,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same<T,\ vector<string>>())\{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<string>\ defVal\ =\ \{\};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.value(name,\ defVal);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same<T,\ vector<int>>())\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<int>\ defVal\ =\ \{\};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.value(name,\ defVal);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same<T,\ vector<Embed>>())\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<Embed>\ defVal\ =\ \{\};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.value(name,\ defVal);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.value(name,\ \textcolor{stringliteral}{"{}UNDEFINED"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ T\ get\_or\_else(\textcolor{keyword}{const}\ json\&\ j,\ \textcolor{keyword}{const}\ std::string\&\ key,\ \textcolor{keyword}{const}\ T\&\ \_default)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.count(key)\ ==\ 0\ ||\ j.at(key).is\_null())}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_default;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ j.at(key).get<T>();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ std::optional<T>\ get\_optional(\textcolor{keyword}{const}\ json\&\ j,\ \textcolor{keyword}{const}\ std::string\&\ key)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j.count(key)\ ==\ 0\ ||\ j.at(key).is\_null())}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_optional<T>(j.at(key).get<T>());}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_utils_1_1_logger}{Logger}}\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ \_name;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keywordtype}{void}\ register\_thread(\textcolor{keyword}{const}\ std::thread::id\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keywordtype}{void}\ unregister\_thread(\textcolor{keyword}{const}\ std::thread::id\&\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ set\_log\_level(\textcolor{keyword}{const}\ Loglevel\&\ level);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_utils_1_1_logger}{Logger}}()\{\};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_utils_1_1_logger}{Logger}}(\textcolor{keyword}{const}\ std::string\&);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keywordtype}{void}\ print(\textcolor{keyword}{const}\ Loglevel\ level,\ \textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keywordtype}{void}\ debug(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keywordtype}{void}\ info(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keywordtype}{void}\ warning(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keywordtype}{void}\ error(\textcolor{keyword}{const}\ std::string\&\ message);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

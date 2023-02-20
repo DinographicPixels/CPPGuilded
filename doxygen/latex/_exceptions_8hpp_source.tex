@@ -1,0 +1,68 @@
+\hypertarget{_exceptions_8hpp_source}{}\doxysection{Exceptions.\+hpp}
+\label{_exceptions_8hpp_source}\index{CPPGuilded/Classes/Exceptions.hpp@{CPPGuilded/Classes/Exceptions.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ PakkoGraphic.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Copyright\ (c)\ 2023\ DinographicPixels.\ All\ rights\ reserved.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <exception>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ CPPGUILDED\_EXCEPTIONS\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ CPPGUILDED\_EXCEPTIONS\_HPP}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ DLL\_EXPORT\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DLL\_EXPORT}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }CPPGuilded\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_guilded_exception}{GuildedException}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::string\ \_what;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_guilded_exception}{GuildedException}}(\textcolor{keyword}{const}\ std::string\&\ what);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_guilded_exception}{\string~GuildedException}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ what()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00029\ \ \ \ \ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_status_code_exception}{StatusCodeException}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_guilded_exception}{GuildedException}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_errorCode;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_status_code_exception}{StatusCodeException}}(\textcolor{keyword}{const}\ std::string\&\ what,\ \textcolor{keywordtype}{int}\ errorCode);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_status_code_exception}{\string~StatusCodeException}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_status_code_exception_a429cf2ac0854973df750182bde4e7b89}{get\_error\_code}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \ \ \ \ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_client_exception}{ClientException}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_guilded_exception}{GuildedException}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_client_exception}{ClientException}}(\textcolor{keyword}{const}\ std::string\&\ what);}
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_size_error}{SizeError}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_guilded_exception}{GuildedException}}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_size_error}{SizeError}}(\textcolor{keyword}{const}\ std::string\&\ what);}
+\DoxyCodeLine{00049\ \ \ \ \ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_opus_error}{OpusError}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_status_code_exception}{StatusCodeException}}\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_opus_error}{OpusError}}(\textcolor{keyword}{const}\ std::string\&\ what,\ \textcolor{keywordtype}{int}\ errorCode);}
+\DoxyCodeLine{00054\ \ \ \ \ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_p_guilded_1_1_h_t_t_p_error}{HTTPError}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_status_code_exception}{StatusCodeException}}\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ DLL\_EXPORT\ \mbox{\hyperlink{class_c_p_p_guilded_1_1_h_t_t_p_error}{HTTPError}}(\textcolor{keyword}{const}\ std::string\&\ what,\ \textcolor{keywordtype}{int}\ errorCode);}
+\DoxyCodeLine{00059\ \ \ \ \ \};}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
