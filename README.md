@@ -1,3 +1,7 @@
+<p align="center">
+<a><img width=40% src="./assets/CPPGuilded_CPPGuilded.svg"></a>
+</p>
+
 # CPPGuilded
 ### A library for interfacing with Guilded, using C++.
 
