@@ -63,14 +63,14 @@ void CPPGuilded::Client::connect() {
 }
 
 CPPGuilded::Message CPPGuilded::Client::create_message(std::string channelID,
-	CPPGuilded::Channels::CreateMessageOptions options)
+	CPPGuilded::MethodOptions::CreateMessage options)
 {
 	return rest->channels->create_message(channelID, options);
 }
 
 CPPGuilded::Message CPPGuilded::Client::edit_message(std::string channelID,
 	std::string messageID,
-	CPPGuilded::Channels::EditMessageOptions options)
+	CPPGuilded::MethodOptions::EditMessage options)
 {
 	return rest->channels->edit_message(channelID, messageID, options);
 }
@@ -91,12 +91,18 @@ CPPGuilded::Message CPPGuilded::Client::get_message(std::string channelID, std::
 }
 
 std::vector<CPPGuilded::Message> CPPGuilded::Client::get_messages(std::string channelID,
-	CPPGuilded::Channels::GetChannelMessagesFilter filter)
+	CPPGuilded::MethodFilters::GetChannelMessages filter)
 {
 	return rest->channels->get_messages(channelID, filter);
 }
 
+CPPGuilded::User CPPGuilded::Client::get_user(const std::string& userID)
+{
+	return rest->misc->get_user(userID);
+}
 
+
+// EVENTS
 void CPPGuilded::Client::on_message_create(CPPGuilded::Message message) {};
 void CPPGuilded::Client::on_message_update(CPPGuilded::Message message) {};
 void CPPGuilded::Client::on_message_delete(CPPGuilded::Message message) {};

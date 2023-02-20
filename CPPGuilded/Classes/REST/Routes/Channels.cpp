@@ -9,11 +9,13 @@
 #include "static.hpp"
 
 #include "Classes/Message.hpp"
+#include "Classes/Channel.hpp"
 #include "Classes/RequestHandler.hpp"
+#include "Classes/Embed.hpp"
 
 CPPGuilded::Channels::Channels(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager): client(client), manager(manager) {};
 
-CPPGuilded::Message CPPGuilded::Channels::create_message(std::string channelID, CreateMessageOptions options) {
+CPPGuilded::Message CPPGuilded::Channels::create_message(std::string channelID, MethodOptions::CreateMessage options) {
 	json jsonOptions = options;
 	if (options.replyMessageIds.empty()) jsonOptions.erase("replyMessageIds");
 	if (options.embeds.size() >= 1){
@@ -30,7 +32,7 @@ CPPGuilded::Message CPPGuilded::Channels::create_message(std::string channelID, 
 	return Message(res, client);
 }
 
-CPPGuilded::Message CPPGuilded::Channels::edit_message(std::string channelID, std::string messageID, EditMessageOptions options) {
+CPPGuilded::Message CPPGuilded::Channels::edit_message(std::string channelID, std::string messageID, MethodOptions::EditMessage options) {
 	json jsonOptions = options;
 	if (options.embeds.size() >= 1) {
 		for (auto x: options.embeds){
@@ -54,7 +56,7 @@ CPPGuilded::Message CPPGuilded::Channels::get_message(std::string channelID, std
 	return Message(res, client);
 }
 
-std::vector<CPPGuilded::Message> CPPGuilded::Channels::get_messages(std::string channelID, GetChannelMessagesFilter filter) {
+std::vector<CPPGuilded::Message> CPPGuilded::Channels::get_messages(std::string channelID, MethodFilters::GetChannelMessages filter) {
 	RequestHandler::GuildedHTTPResponse req = manager->request("GET", "/channels/" + channelID + "/messages");
 	json res = json::parse(req.body).at("messages");
 	std::vector<CPPGuilded::Message> messages;
@@ -62,4 +64,25 @@ std::vector<CPPGuilded::Message> CPPGuilded::Channels::get_messages(std::string 
 		messages.push_back(Message(jsonMsg, client));
 	}
 	return messages;
+}
+
+CPPGuilded::Channel CPPGuilded::Channels::create_channel(MethodOptions::CreateChannel options)
+{
+	json jsonOptions = options;
+	RequestHandler::GuildedHTTPResponse req = manager->request("POST", "/channels", jsonOptions);
+	json res = json::parse(req.body).at("channel");
+	return Channel(res, client);
+}
+
+CPPGuilded::Channel CPPGuilded::Channels::edit_channel(std::string channelID, MethodOptions::EditChannel options)
+{
+	json jsonOptions = options;
+	RequestHandler::GuildedHTTPResponse req = manager->request("PATCH", "/channels/" + channelID, jsonOptions);
+	json res = json::parse(req.body).at("channel");
+	return Channel(res, client);
+}
+
+void CPPGuilded::Channels::delete_channel(std::string channelID)
+{
+	manager->request("PATCH", "/channels/" + channelID);
 }

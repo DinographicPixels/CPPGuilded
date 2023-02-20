@@ -11,6 +11,7 @@
 #include "static.hpp"
 
 #include "Classes/Message.hpp"
+#include "Classes/Channel.hpp"
 
 namespace CPPGuilded {
 	class Client;
@@ -20,33 +21,15 @@ namespace CPPGuilded {
 		CPPGuilded::Client* client;
 		std::shared_ptr<CPPGuilded::RequestHandler> manager;
 	 public:
-		struct CreateMessageOptions {
-			string content;
-			vector<string> replyMessageIds;
-			bool isPrivate = false;
-			bool isSilent = false;
-			vector<Message::Embed> embeds;
-			NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateMessageOptions, content, replyMessageIds, isPrivate, isSilent);
-		};
-		struct EditMessageOptions {
-			std::string content;
-			vector<Message::Embed> embeds;
-			NLOHMANN_DEFINE_TYPE_INTRUSIVE(EditMessageOptions, content);
-		};
-		struct GetChannelMessagesFilter {
-			std::string before;
-			std::string after;
-			int limit;
-			bool includePrivate;
-			NLOHMANN_DEFINE_TYPE_INTRUSIVE(GetChannelMessagesFilter, before, after, limit, includePrivate);
-		};
-
 		Channels(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager);
-		CPPGuilded::Message create_message(std::string channelID, CreateMessageOptions options);
-		CPPGuilded::Message edit_message(std::string channelID, std::string messageID, EditMessageOptions options);
+		CPPGuilded::Message create_message(std::string channelID, MethodOptions::CreateMessage options);
+		CPPGuilded::Message edit_message(std::string channelID, std::string messageID, MethodOptions::EditMessage options);
 		void delete_message(std::string channelID, std::string messageID);
 		CPPGuilded::Message get_message(std::string channelID, std::string messageID);
-		std::vector<CPPGuilded::Message> get_messages(std::string channelID, GetChannelMessagesFilter filter);
+		std::vector<CPPGuilded::Message> get_messages(std::string channelID, MethodFilters::GetChannelMessages filter);
+		CPPGuilded::Channel create_channel(MethodOptions::CreateChannel options);
+		CPPGuilded::Channel edit_channel(std::string channelID, MethodOptions::EditChannel options);
+		void delete_channel(std::string channelID);
 	};
 }
 

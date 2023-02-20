@@ -18,7 +18,7 @@ class BotClient: public Client {
 		this->token = token;
 	};
 	void on_message_create(CPPGuilded::Message message) override {
-		Message::Embed messageEmbed = Message::Embed();
+		Embed messageEmbed = Embed();
 		messageEmbed.title = "embed testin'";
 		messageEmbed.description = "this is a desc";
 		messageEmbed.color = 6118369;
@@ -34,7 +34,7 @@ class BotClient: public Client {
 		};
 
 		CPPGuilded::Member messageAuthor = get_member_test(message);
-		if (messageAuthor.type == "bot") return;
+		if (messageAuthor.bot == true) return;
 
 		Message greetingMessage = message_create_test();
 		advanced_message_create_test(messageEmbed);
@@ -51,13 +51,20 @@ class BotClient: public Client {
 
 		get_messages_test(greetingMessage);
 		this_thread::sleep_for(chrono::seconds(1));
+
+		User user = get_user_test(greetingMessage.createdBy);
+		std::cout << user.type; // breakpoint here.
+		this_thread::sleep_for(chrono::seconds(1));
+
+		channel_tests();
+		this_thread::sleep_for(chrono::seconds(1));
 	}
 
 	Message message_create_test() {
 		return this->create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi" });
 	}
 
-	Message advanced_message_create_test(CPPGuilded::Message::Embed messageEmbed) {
+	Message advanced_message_create_test(CPPGuilded::Embed messageEmbed) {
 		return this->create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, { messageEmbed }});
 	}
 
@@ -81,6 +88,24 @@ class BotClient: public Client {
 
 	Member get_member_test(Message message) {
 		return this->get_member(message.guildID, message.createdBy);
+	}
+
+	User get_user_test(const std::string& userID) {
+		User user = get_user(userID);
+		std::cout << "my user id: " << user.id << std::endl;
+		return user;
+	}
+
+	void channel_tests(){
+		MethodOptions::CreateChannel options;
+		options.serverId = "aE9VwoAj";
+		options.name = "name";
+		Channel createdChannel = this->rest->channels->create_channel(options);
+		std::cout << "channel_tests" << std::endl;
+		this_thread::sleep_for(chrono::seconds(1));
+		this->rest->channels->edit_channel(createdChannel.id, {"new name"});
+		this_thread::sleep_for(chrono::seconds(1));
+		this->rest->channels->delete_channel(createdChannel.id);
 	}
 };
 

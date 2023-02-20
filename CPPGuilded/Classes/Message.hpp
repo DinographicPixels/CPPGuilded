@@ -9,53 +9,14 @@
 #define CPPGUILDED_MESSAGE_HPP
 
 #include "static.hpp"
+#include "REST/Definitions.hpp"
 
 namespace CPPGuilded {
 	class Client;
+	class Embed;
     class Message {
     public:
-	  class Embed {
-		protected:
-		  struct fieldsField {
-			  string name;
-			  string value;
-			  bool isInline;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(fields, name, value);
-		  };
-		  struct footerStruct {
-			  string text;
-			  string icon_url;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(footer, icon_url);
-		  };
-		  struct thumbnailStruct {
-			  string url;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(thumbnail, url);
-		  };
-		  struct imageStruct {
-			  string url;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(image, url);
-		  };
-		  struct authorStruct {
-			  string name;
-			  string url;
-			  string icon_url;
-			  // NLOHMANN_DEFINE_TYPE_INTRUSIVE(author, name, url, icon_url);
-		  };
-		public:
-		  string title;
-		  string description;
-		  string url;
-		  int color;
-		  string timestamp;
-		  vector<fieldsField> fields;
-		  footerStruct footer;
-		  thumbnailStruct thumbnail;
-		  imageStruct image;
-          authorStruct author;
-		  NLOHMANN_DEFINE_TYPE_INTRUSIVE(Embed, title, description);
-		  // DLL_EXPORT Embed(string title);
-		  DLL_EXPORT json to_json();
-	  };
+	    CPPGuilded::Client* client;
         string id;
         string type;
         string guildID;
@@ -71,6 +32,9 @@ namespace CPPGuilded {
         string createdByWebhookID;
         string updatedAt;
         DLL_EXPORT Message(const json& data, Client* client);
+		DLL_EXPORT CPPGuilded::Message create_message(CPPGuilded::MethodOptions::CreateMessage options);
+		DLL_EXPORT CPPGuilded::Message edit_message(CPPGuilded::MethodOptions::EditMessage options);
+		DLL_EXPORT void delete_message();
     };
 }
 

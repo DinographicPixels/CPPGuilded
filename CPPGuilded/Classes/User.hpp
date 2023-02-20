@@ -12,14 +12,15 @@
 
 #include "static.hpp"
 #include "library.hpp"
+#include "Base.hpp"
 
 namespace CPPGuilded {
-	class User {
+	class User : public Base<std::string> {
 	 public:
-		std::string id;
 		std::string type;
 		std::string username;
 		std::string avatarURL;
+		bool bot;
 		User(const json& data, Client* client);
 	};
 

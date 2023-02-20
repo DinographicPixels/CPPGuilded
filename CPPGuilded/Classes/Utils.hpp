@@ -14,7 +14,7 @@
 #include <mutex>
 #include <map>
 
-#include "Message.hpp"
+#include "Classes/Embed.hpp"
 using namespace std;
 
 enum Loglevel {
@@ -41,8 +41,8 @@ namespace CPPGuilded {
 			} else if constexpr (std::is_same<T, vector<int>>()){
 				vector<int> defVal = {};
 				return data.value(name, defVal);
-			} else if constexpr (std::is_same<T, vector<Message::Embed>>()) {
-				vector<Message::Embed> defVal = {};
+			} else if constexpr (std::is_same<T, vector<Embed>>()) {
+				vector<Embed> defVal = {};
 				return data.value(name, defVal);
 			} else {
 				return data.value(name, "UNDEFINED");

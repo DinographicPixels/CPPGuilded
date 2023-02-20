@@ -13,6 +13,7 @@
 
 #include "Routes/Channels.hpp"
 #include "Routes/Guilds.hpp"
+#include "Routes/Misc.hpp"
 
 namespace CPPGuilded {
 	class Client;
@@ -23,6 +24,7 @@ namespace CPPGuilded {
 	 public:
 		std::unique_ptr<CPPGuilded::Channels> channels;
 		std::unique_ptr<CPPGuilded::Guilds> guilds;
+		std::unique_ptr<CPPGuilded::Misc> misc;
 		RESTManager(CPPGuilded::Client* client);
 	};
 }
