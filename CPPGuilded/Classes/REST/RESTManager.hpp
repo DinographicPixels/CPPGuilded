@@ -20,11 +20,11 @@ namespace CPPGuilded {
 	class RESTManager {
 	 protected:
 		CPPGuilded::Client* client;
-		std::shared_ptr<CPPGuilded::RequestHandler> manager;
+		std::shared_ptr<CPPGuilded::RequestHandler> manager = make_shared<RequestHandler>(client);;
 	 public:
-		std::unique_ptr<CPPGuilded::Channels> channels;
-		std::unique_ptr<CPPGuilded::Guilds> guilds;
-		std::unique_ptr<CPPGuilded::Misc> misc;
+		CPPGuilded::Channels channels;
+		CPPGuilded::Guilds guilds;
+		CPPGuilded::Misc misc;
 		RESTManager(CPPGuilded::Client* client);
 	};
 }

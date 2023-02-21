@@ -38,6 +38,8 @@ namespace ssl = net::ssl;
 namespace websocket = beast::websocket;
 using tcp = net::ip::tcp;
 
+#include "Classes/Exceptions.hpp"
+
 CPPGuilded::WSManager::WSManager(const std::string& token, const std::shared_ptr<Threadpool>& threadpool): threadpool(threadpool), ctx{ssl::context::tlsv13_client}, ioc() {
 	this->log = Utils::Logger("CPPGuilded | WSManager");
 	this->token = token;
@@ -253,8 +255,7 @@ std::shared_future<void> CPPGuilded::WSManager::close() {
 std::shared_future<void> CPPGuilded::WSManager::send(const json& message) {
 	return threadpool->execute([this, message]() {
 		if (connected == false) {
-			//throw ClientException("Gateway not connected");
-			throw "Gateway not connected";
+			throw ClientException("Gateway not connected");
 		}
 		// std::string message_string = message.dump();
 		// log.debug("sending message: " + message_string);

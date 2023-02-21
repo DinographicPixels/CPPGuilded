@@ -9,7 +9,7 @@
 #define CPPGUILDED_REQUESTHANDLER_HPP
 
 #include "static.hpp"
-
+#include "Utils.hpp"
 
 namespace CPPGuilded {
 	class Client;
@@ -21,6 +21,7 @@ namespace CPPGuilded {
 			std::string body;
 		};
 		GuildedHTTPResponse request(const string method, const string target, const string& data = "");
+		Utils::Logger log;
 		DLL_EXPORT RequestHandler(Client* client);
 		Client* client;
 	};

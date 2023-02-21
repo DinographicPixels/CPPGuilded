@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.18 )
 
-project( cppguilded )
+project(cppguilded VERSION 1.0.0 DESCRIPTION "A library for interfacing with Guilded, using C++.")
 
 set( CMAKE_CXX_STANDARD 17 )
 set( CMAKE_CXX_STANDARD_REQUIRED True )

@@ -33,15 +33,15 @@ CPPGuilded::Message::Message(const json &data, Client* client): client(client) {
 
 CPPGuilded::Message CPPGuilded::Message::create_message(CPPGuilded::MethodOptions::CreateMessage options)
 {
-	return client->rest->channels->create_message(channelID, options);
+	return client->rest.channels.create_message(channelID, options);
 }
 
 CPPGuilded::Message CPPGuilded::Message::edit_message(CPPGuilded::MethodOptions::EditMessage options)
 {
-	return client->rest->channels->edit_message(channelID, id, options);
+	return client->rest.channels.edit_message(channelID, id, options);
 }
 
 void CPPGuilded::Message::delete_message()
 {
-	client->rest->channels->delete_message(channelID, id);
+	client->rest.channels.delete_message(channelID, id);
 }

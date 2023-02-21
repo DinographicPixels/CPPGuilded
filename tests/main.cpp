@@ -12,6 +12,8 @@ using namespace CPPGuilded;
 
 std::string token = "gapi_jQlwqi1jzqrm6eTeWdQZ+rHrqwofVNlFGIFeCBSxLeuHGVVFOQsRSH4pm8iGIYokw3wAt6A/lbVsUDH4EjZipg==";
 
+#include "Classes/Exceptions.hpp"
+
 class BotClient: public Client {
   public:
 	BotClient(std::string token): Client(token) {
@@ -36,6 +38,7 @@ class BotClient: public Client {
 		CPPGuilded::Member messageAuthor = get_member_test(message);
 		if (messageAuthor.bot == true) return;
 
+		/**
 		Message greetingMessage = message_create_test();
 		advanced_message_create_test(messageEmbed);
 		this_thread::sleep_for(chrono::seconds(1));
@@ -55,9 +58,9 @@ class BotClient: public Client {
 		User user = get_user_test(greetingMessage.createdBy);
 		std::cout << user.type; // breakpoint here.
 		this_thread::sleep_for(chrono::seconds(1));
-
+		*/
 		channel_tests();
-		this_thread::sleep_for(chrono::seconds(1));
+		// this_thread::sleep_for(chrono::seconds(1));
 	}
 
 	Message message_create_test() {
@@ -97,15 +100,18 @@ class BotClient: public Client {
 	}
 
 	void channel_tests(){
+		std::cout << "running.." << std::endl;
 		MethodOptions::CreateChannel options;
 		options.serverId = "aE9VwoAj";
 		options.name = "name";
-		Channel createdChannel = this->rest->channels->create_channel(options);
+		// options.type = "chat";
+		Channel createdChannel = this->rest.channels.create_channel(options);
+		std::cout << createdChannel.id << std::endl; // breakpoint here.
 		std::cout << "channel_tests" << std::endl;
 		this_thread::sleep_for(chrono::seconds(1));
-		this->rest->channels->edit_channel(createdChannel.id, {"new name"});
+		this->rest.channels.edit_channel(createdChannel.id, { "new name" });
 		this_thread::sleep_for(chrono::seconds(1));
-		this->rest->channels->delete_channel(createdChannel.id);
+		this->rest.channels.delete_channel(createdChannel.id);
 	}
 };
 

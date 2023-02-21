@@ -31,10 +31,9 @@ namespace net = boost::asio;
 namespace ssl = net::ssl;
 using tcp = net::ip::tcp;
 
-CPPGuilded::Client::Client(string token){
+CPPGuilded::Client::Client(string token): rest(RESTManager(this)) {
     this->token = token;
     this->utils = std::make_unique<Utils>();
-	this->rest = std::make_unique<RESTManager>(this);
 	this->log = Utils::Logger("Client | CPPGuilded");
 	this->gatewayHandler = std::make_shared<GatewayHandler>(this);
 }
@@ -65,40 +64,40 @@ void CPPGuilded::Client::connect() {
 CPPGuilded::Message CPPGuilded::Client::create_message(std::string channelID,
 	CPPGuilded::MethodOptions::CreateMessage options)
 {
-	return rest->channels->create_message(channelID, options);
+	return rest.channels.create_message(channelID, options);
 }
 
 CPPGuilded::Message CPPGuilded::Client::edit_message(std::string channelID,
 	std::string messageID,
 	CPPGuilded::MethodOptions::EditMessage options)
 {
-	return rest->channels->edit_message(channelID, messageID, options);
+	return rest.channels.edit_message(channelID, messageID, options);
 }
 
 void CPPGuilded::Client::delete_message(std::string channelID, std::string messageID)
 {
-	return rest->channels->delete_message(channelID, messageID);
+	return rest.channels.delete_message(channelID, messageID);
 }
 
 CPPGuilded::Member CPPGuilded::Client::get_member(std::string guildID, std::string memberID)
 {
-	return rest->guilds->get_member(guildID, memberID);
+	return rest.guilds.get_member(guildID, memberID);
 }
 
 CPPGuilded::Message CPPGuilded::Client::get_message(std::string channelID, std::string messageID)
 {
-	return rest->channels->get_message(channelID, messageID);
+	return rest.channels.get_message(channelID, messageID);
 }
 
 std::vector<CPPGuilded::Message> CPPGuilded::Client::get_messages(std::string channelID,
 	CPPGuilded::MethodFilters::GetChannelMessages filter)
 {
-	return rest->channels->get_messages(channelID, filter);
+	return rest.channels.get_messages(channelID, filter);
 }
 
 CPPGuilded::User CPPGuilded::Client::get_user(const std::string& userID)
 {
-	return rest->misc->get_user(userID);
+	return rest.misc.get_user(userID);
 }
 
 

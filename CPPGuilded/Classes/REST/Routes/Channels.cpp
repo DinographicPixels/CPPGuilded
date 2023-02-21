@@ -13,7 +13,11 @@
 #include "Classes/RequestHandler.hpp"
 #include "Classes/Embed.hpp"
 
-CPPGuilded::Channels::Channels(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager): client(client), manager(manager) {};
+#include "Classes/Exceptions.hpp"
+
+CPPGuilded::Channels::Channels(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager): client(client), manager(manager) {
+	log = Utils::Logger("REST/Channels | CPPGuilded");
+};
 
 CPPGuilded::Message CPPGuilded::Channels::create_message(std::string channelID, MethodOptions::CreateMessage options) {
 	json jsonOptions = options;
@@ -68,16 +72,27 @@ std::vector<CPPGuilded::Message> CPPGuilded::Channels::get_messages(std::string 
 
 CPPGuilded::Channel CPPGuilded::Channels::create_channel(MethodOptions::CreateChannel options)
 {
-	json jsonOptions = options;
-	RequestHandler::GuildedHTTPResponse req = manager->request("POST", "/channels", jsonOptions);
+	json jsonOptions;
+	// Required properties. (if they aren't set, the API will return an error)
+	if (options.name.size() >= 1) jsonOptions["name"] = options.name;
+	if (options.type.size() >= 1) jsonOptions["type"] = options.type;
+	// Optional properties:
+	if (options.serverId) jsonOptions["serverId"] = options.serverId.value();
+	if (options.topic) jsonOptions["topic"] = options.topic.value();
+	if (options.categoryId) jsonOptions["categoryId"] = options.categoryId.value();
+	if (options.groupId) jsonOptions["groupId"] = options.groupId.value();
+	if (options.isPublic) jsonOptions["isPublic"] = options.isPublic.value();
+	std::cout << jsonOptions << std::endl;
+	RequestHandler::GuildedHTTPResponse req = manager->request("POST", "/channels", jsonOptions.dump());
 	json res = json::parse(req.body).at("channel");
 	return Channel(res, client);
+
 }
 
 CPPGuilded::Channel CPPGuilded::Channels::edit_channel(std::string channelID, MethodOptions::EditChannel options)
 {
 	json jsonOptions = options;
-	RequestHandler::GuildedHTTPResponse req = manager->request("PATCH", "/channels/" + channelID, jsonOptions);
+	RequestHandler::GuildedHTTPResponse req = manager->request("PATCH", "/channels/" + channelID, jsonOptions.dump());
 	json res = json::parse(req.body).at("channel");
 	return Channel(res, client);
 }

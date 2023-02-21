@@ -12,6 +12,7 @@
 
 #include "Classes/Message.hpp"
 #include "Classes/Channel.hpp"
+#include "Classes/Utils.hpp"
 
 namespace CPPGuilded {
 	class Client;
@@ -20,6 +21,7 @@ namespace CPPGuilded {
 	 protected:
 		CPPGuilded::Client* client;
 		std::shared_ptr<CPPGuilded::RequestHandler> manager;
+		Utils::Logger log;
 	 public:
 		Channels(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager);
 		CPPGuilded::Message create_message(std::string channelID, MethodOptions::CreateMessage options);

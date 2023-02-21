@@ -16,6 +16,10 @@
 #include <boost/log/core.hpp>
 
 #include "library.hpp"
+#include "Utils.hpp"
+
+#include <exception>
+#include "Exceptions.hpp"
 
 namespace beast = boost::beast;
 namespace http = beast::http;
@@ -25,6 +29,7 @@ using tcp = net::ip::tcp;
 
 CPPGuilded::RequestHandler::RequestHandler(Client* client) {
 	this->client = client;
+	this->log = Utils::Logger("Request | CPPGuilded");
 }
 
 CPPGuilded::RequestHandler::GuildedHTTPResponse CPPGuilded::RequestHandler::request(const string method, const string target, const string& data) {
@@ -71,7 +76,15 @@ CPPGuilded::RequestHandler::GuildedHTTPResponse CPPGuilded::RequestHandler::requ
 	http::response<http::string_body> res;
 
 	http::read(stream, buffer, res);
-	std::cout << res << std::endl;
+
+	json parsedBody = json::parse(res.body());
+	if (parsedBody["code"].size() >= 1) {
+		log.error("HTTPError: " + to_string(parsedBody["code"]) + " | Message: " + to_string(parsedBody["message"]));
+		if (parsedBody["message"].size() < 1) throw CPPGuilded::HTTPError("Something went wrong.", parsedBody["code"]);
+		throw CPPGuilded::HTTPError(parsedBody["message"], parsedBody["code"]);
+	}
+
+	std::cout << "debug (res): " << res << std::endl;
 
 	beast::error_code errCode;
 	stream.shutdown(errCode);

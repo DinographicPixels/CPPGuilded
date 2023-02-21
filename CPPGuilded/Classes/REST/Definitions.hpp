@@ -30,13 +30,13 @@ namespace CPPGuilded {
 		};
 		struct CreateChannel {
 			std::string name;
-			std::string topic;
-			bool isPublic;
+			std::optional<std::string> topic;
+			std::optional<bool> isPublic;
 			std::string type;
-			std::string serverId;
-			std::string groupId;
-			int categoryId;
-			NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateChannel, topic, isPublic, serverId, groupId, categoryId);
+			std::optional<std::string> serverId;
+			std::optional<std::string> groupId;
+			std::optional<int> categoryId;
+			NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateChannel, name, type);
 		};
 		struct EditChannel {
 			std::string name;

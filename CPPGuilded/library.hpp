@@ -54,7 +54,7 @@ namespace CPPGuilded {
 		/**
 		 * The RESTManager class, where you can use REST methods.\n (rest#guilds, rest#channels, rest#misc)
 		 */
-		std::unique_ptr<CPPGuilded::RESTManager> rest;
+		CPPGuilded::RESTManager rest;
 		/**
 		 * GatewayHandler is used to let you stay in touch with the Guilded API.\n
 		 * Please do not touch.
