@@ -4,6 +4,7 @@
 //
 
 #include <iostream>
+#include "index.h"
 #include "../CPPGuilded/library.hpp"
 #include "Classes/Gateway/WSManager.hpp"
 #include "Classes/Member.hpp"
@@ -60,7 +61,7 @@ class BotClient: public Client {
 		this_thread::sleep_for(chrono::seconds(1));
 		*/
 		channel_tests();
-		// this_thread::sleep_for(chrono::seconds(1));
+		this_thread::sleep_for(chrono::seconds(1));
 	}
 
 	Message message_create_test() {
@@ -104,14 +105,14 @@ class BotClient: public Client {
 		MethodOptions::CreateChannel options;
 		options.serverId = "aE9VwoAj";
 		options.name = "name";
-		// options.type = "chat";
-		Channel createdChannel = this->rest.channels.create_channel(options);
-		std::cout << createdChannel.id << std::endl; // breakpoint here.
+		options.type = "chat";
+		Channel createdChannel = this->create_channel(options);
+		std::cout << "channel id here: "  << createdChannel.id << std::endl; // breakpoint here.
 		std::cout << "channel_tests" << std::endl;
 		this_thread::sleep_for(chrono::seconds(1));
-		this->rest.channels.edit_channel(createdChannel.id, { "new name" });
+		this->edit_channel(createdChannel.id, { "new name" });
 		this_thread::sleep_for(chrono::seconds(1));
-		this->rest.channels.delete_channel(createdChannel.id);
+		this->delete_channel(createdChannel.id);
 	}
 };
 
