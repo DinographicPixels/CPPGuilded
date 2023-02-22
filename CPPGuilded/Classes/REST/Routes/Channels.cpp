@@ -91,7 +91,11 @@ CPPGuilded::Channel CPPGuilded::Channels::create_channel(MethodOptions::CreateCh
 
 CPPGuilded::Channel CPPGuilded::Channels::edit_channel(std::string channelID, MethodOptions::EditChannel options)
 {
-	json jsonOptions = options;
+	json jsonOptions;
+	if (options.name) jsonOptions["name"] = options.name.value();
+	if (options.topic) jsonOptions["topic"] = options.topic.value();
+	if (options.isPublic) jsonOptions["isPublic"] = options.isPublic.value();
+
 	RequestHandler::GuildedHTTPResponse req = manager->request("PATCH", "/channels/" + channelID, jsonOptions.dump());
 	json res = json::parse(req.body).at("channel");
 	return Channel(res, client);
@@ -99,5 +103,6 @@ CPPGuilded::Channel CPPGuilded::Channels::edit_channel(std::string channelID, Me
 
 void CPPGuilded::Channels::delete_channel(std::string channelID)
 {
-	manager->request("PATCH", "/channels/" + channelID);
+	manager->request("DELETE", "/channels/" + channelID);
 }
+

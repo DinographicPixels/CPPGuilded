@@ -36,13 +36,13 @@ namespace CPPGuilded {
 			std::optional<std::string> serverId;
 			std::optional<std::string> groupId;
 			std::optional<int> categoryId;
-			NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateChannel, name, type);
+			// NLOHMANN_DEFINE_TYPE_INTRUSIVE(CreateChannel, name, type);
 		};
 		struct EditChannel {
-			std::string name;
-			std::string topic;
-			bool isPublic;
-			NLOHMANN_DEFINE_TYPE_INTRUSIVE(EditChannel, name, topic, isPublic);
+			std::optional<std::string> name;
+			std::optional<std::string> topic;
+			std::optional<bool> isPublic;
+			// NLOHMANN_DEFINE_TYPE_INTRUSIVE(EditChannel, name, topic, isPublic);
 		};
 	};
 	class MethodFilters {

@@ -149,6 +149,24 @@ namespace CPPGuilded {
 		 * @return User
 		 */
 		DLL_EXPORT CPPGuilded::User get_user(const std::string& userID);
+		/**
+		 * Create a channel within a Guild.
+		 * @param options Create options.
+		 * @return Channel
+		 */
+		DLL_EXPORT CPPGuilded::Channel create_channel(MethodOptions::CreateChannel options);
+		/**
+		 * Edit a guild channel.
+		 * @param channelID ID of the channel to update.
+		 * @param options Edit options.
+		 * @return Channel
+		 */
+		DLL_EXPORT CPPGuilded::Channel edit_channel(std::string channelID, MethodOptions::EditChannel options);
+		/**
+		 * Delete a guild channel.
+		 * @param channelID ID of the channel to delete.
+		 */
+		DLL_EXPORT void delete_channel(std::string channelID);
     };
 }
 

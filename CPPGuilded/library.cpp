@@ -100,6 +100,21 @@ CPPGuilded::User CPPGuilded::Client::get_user(const std::string& userID)
 	return rest.misc.get_user(userID);
 }
 
+CPPGuilded::Channel CPPGuilded::Client::create_channel(CPPGuilded::MethodOptions::CreateChannel options)
+{
+	return rest.channels.create_channel(options);
+};
+
+CPPGuilded::Channel CPPGuilded::Client::edit_channel(std::string channelID, MethodOptions::EditChannel options)
+{
+	return rest.channels.edit_channel(channelID, options);
+}
+
+void CPPGuilded::Client::delete_channel(std::string channelID)
+{
+	rest.channels.delete_channel(channelID);
+}
+
 
 // EVENTS
 void CPPGuilded::Client::on_message_create(CPPGuilded::Message message) {};
