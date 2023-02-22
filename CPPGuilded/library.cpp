@@ -117,7 +117,7 @@ void CPPGuilded::Client::delete_channel(std::string channelID)
 
 CPPGuilded::Channel CPPGuilded::Client::get_channel(std::string channelID)
 {
-	return rest->channels.get_channel(channelID);
+	return rest.channels.get_channel(channelID);
 }
 
 
