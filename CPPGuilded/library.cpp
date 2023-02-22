@@ -112,7 +112,7 @@ CPPGuilded::Channel CPPGuilded::Client::edit_channel(std::string channelID, Meth
 
 void CPPGuilded::Client::delete_channel(std::string channelID)
 {
-	rest.channels.delete_channel(channelID);
+	return rest.channels.delete_channel(channelID);
 }
 
 

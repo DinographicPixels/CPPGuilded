@@ -14,6 +14,7 @@ namespace CPPGuilded {
 	class Client;
 	class RequestHandler;
 	class Member;
+	class Guild;
 	class Guilds {
 	 protected:
 		CPPGuilded::Client* client;
@@ -21,6 +22,7 @@ namespace CPPGuilded {
 	 public:
 		Guilds(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager);
 		CPPGuilded::Member get_member(std::string guildID, std::string memberID);
+		CPPGuilded::Guild get_guild(std::string guildID);
 	};
 }
 

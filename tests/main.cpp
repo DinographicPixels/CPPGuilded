@@ -60,7 +60,11 @@ class BotClient: public Client {
 		std::cout << user.type; // breakpoint here.
 		this_thread::sleep_for(chrono::seconds(1));
 		*/
-		channel_tests();
+		// cursed method
+		//channel_tests();
+		//this_thread::sleep_for(chrono::seconds(1));
+
+		get_guild_test(message.guildID);
 		this_thread::sleep_for(chrono::seconds(1));
 	}
 
@@ -113,6 +117,13 @@ class BotClient: public Client {
 		this->edit_channel(createdChannel.id, { "new name" });
 		this_thread::sleep_for(chrono::seconds(1));
 		this->delete_channel(createdChannel.id);
+	}
+
+	void get_guild_test(const std::string& guildID) {
+		std::cout << "get guild is running.." << std::endl;
+		CPPGuilded::Guild retrievedGuild = this->rest.guilds.get_guild(guildID);
+		if (retrievedGuild.type) std::cout << "type is defined" << std::endl; else std::cout << "type isn't defined" << std::endl;
+		std::cout << "optional value, type: " << retrievedGuild.type.value() << std::endl;
 	}
 };
 

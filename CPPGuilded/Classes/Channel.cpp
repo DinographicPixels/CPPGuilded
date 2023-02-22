@@ -11,16 +11,25 @@
 
 using namespace std;
 
-CPPGuilded::Channel::Channel(const json& data, Client* client) {
+CPPGuilded::Channel::Channel(const json& data, Client* client): Base<std::string>(
+	client->utils->get_or_else<std::string>(data, "id", "")
+	) {
 	this->client = client;
-    id = client->utils->get_value<std::string>(data, "id");
-    type = client->utils->get_value<std::string>(data, "type");
-    name = client->utils->get_value<std::string>(data, "name");
-    topic = client->utils->get_value<std::string>(data, "topic");
-    createdAt = client->utils->get_value<std::string>(data, "createdAt");
-    createdBy = client->utils->get_value<std::string>(data, "createdBy");
-    serverID = client->utils->get_value<std::string>(data, "serverId");
-    groupID = client->utils->get_value<std::string>(data, "groupId");
+	// Properties
+	type = client->utils->get_or_else<std::string>(data, "type", "");
+	name = client->utils->get_or_else<std::string>(data, "name", "");
+	createdAt = client->utils->get_or_else<std::string>(data, "createdAt", "");
+	createdBy = client->utils->get_or_else<std::string>(data, "createdBy", "");
+	guildID = client->utils->get_or_else<std::string>(data, "guildID", "");
+	groupID = client->utils->get_or_else<std::string>(data, "groupID", "");
+	// Optional properties
+	topic = client->utils->get_optional<std::string>(data, "topic");
+	updatedAt = client->utils->get_optional<std::string>(data, "updatedAt");
+	parentID = client->utils->get_optional<std::string>(data, "parentId");
+	categoryID = client->utils->get_optional<std::string>(data, "categoryId");
+	isPublic = client->utils->get_optional<bool>(data, "isPublic");
+	archivedBy = client->utils->get_optional<std::string>(data, "archivedBy");
+	archivedAt = client->utils->get_optional<std::string>(data, "archivedAt");
 };
 
 CPPGuilded::Channel CPPGuilded::Channel::edit(CPPGuilded::MethodOptions::EditChannel options)
@@ -30,5 +39,5 @@ CPPGuilded::Channel CPPGuilded::Channel::edit(CPPGuilded::MethodOptions::EditCha
 
 void CPPGuilded::Channel::delete_c()
 {
-	client->rest.channels.delete_channel(id);
+	return client->rest.channels.delete_channel(id);
 }

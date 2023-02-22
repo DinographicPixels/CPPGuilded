@@ -10,23 +10,29 @@
 
 #include <iostream>
 #include "static.hpp"
+#include "Classes/Base.hpp"
 #include "Classes/REST/Definitions.hpp"
 using namespace std;
 
 namespace CPPGuilded {
 	class Client;
-    class Channel {
+    class Channel: public Base<std::string> {
 	 protected:
 		CPPGuilded::Client* client;
      public:
-        string id;
-        string type;
-        string name;
-        string topic;
-        string createdAt;
-        string createdBy;
-        string serverID;
-        string groupID;
+		std::string type;
+		std::string name;
+		std::optional<std::string> topic;
+		std::string createdAt;
+		std::string createdBy;
+		std::optional<std::string> updatedAt;
+		std::string guildID;
+		std::optional<std::string> parentID;
+		std::optional<std::string> categoryID;
+		std::string groupID;
+		std::optional<bool> isPublic;
+		std::optional<std::string> archivedBy;
+		std::optional<std::string> archivedAt;
         DLL_EXPORT Channel(const json& data, Client* client);
 		/**
 		 * Edit this channel.

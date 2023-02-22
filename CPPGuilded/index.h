@@ -8,4 +8,5 @@
 #include "Classes/Embed.hpp"
 #include "Classes/User.hpp"
 #include "Classes/Member.hpp"
+#include "Classes/Guild.hpp"
 #include "Classes/REST/Definitions.hpp"
