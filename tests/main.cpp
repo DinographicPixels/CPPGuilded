@@ -64,7 +64,7 @@ class BotClient: public Client {
 		//channel_tests();
 		//this_thread::sleep_for(chrono::seconds(1));
 
-		get_guild_test(message.guildID);
+		get_guild_test(message.guildID.value());
 		this_thread::sleep_for(chrono::seconds(1));
 	}
 
@@ -95,7 +95,7 @@ class BotClient: public Client {
 	}
 
 	Member get_member_test(Message message) {
-		return this->get_member(message.guildID, message.createdBy);
+		return this->get_member(message.guildID.value(), message.createdBy);
 	}
 
 	User get_user_test(const std::string& userID) {

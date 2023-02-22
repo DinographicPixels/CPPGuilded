@@ -19,7 +19,8 @@ namespace CPPGuilded {
 	 public:
 		std::string type;
 		std::string username;
-		std::string avatarURL;
+		std::optional<std::string> avatarURL;
+		std::optional<std::string> bannerURL;
 		bool bot;
 		User(const json& data, Client* client);
 	};

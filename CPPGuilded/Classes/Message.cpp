@@ -13,21 +13,24 @@
 #include "REST/Definitions.hpp"
 #include "Embed.hpp"
 
-CPPGuilded::Message::Message(const json &data, Client* client): client(client) {
-    id = client->utils->get_value<std::string>(data, "id");
-    type = client->utils->get_value<std::string>(data, "type");
-    guildID = client->utils->get_value<std::string>(data, "serverId");
-    channelID = client->utils->get_value<std::string>(data, "channelId");
-    content = client->utils->get_value<std::string>(data, "content");
-    embeds = client->utils->get_value<vector<Embed>>(data, "embeds");
-    replyMessageIDs = client->utils->get_value<vector<string>>(data, "replyMessageIds");
-    isPrivate = client->utils->get_value<bool>(data, "isPrivate");
-    isSilent = client->utils->get_value<bool>(data, "isSilent");
-    mentions = client->utils->get_value<std::string>(data, "mentions");
-    createdAt = client->utils->get_value<std::string>(data, "createdAt");
-    createdBy = client->utils->get_value<std::string>(data, "createdBy");
-    createdByWebhookID = client->utils->get_value<std::string>(data, "createdByWebhookId");
-    updatedAt = client->utils->get_value<std::string>(data, "updatedAt");
+CPPGuilded::Message::Message(const json &data, Client* client): Base<std::string>(
+	client->utils->get_or_else<std::string>(data, "id", "")
+	), client(client) {
+	// Properties
+    type = client->utils->get_or_else<std::string>(data, "type", "");
+    channelID = client->utils->get_or_else<std::string>(data, "channelId", "");
+    embeds = client->utils->get_or_else<vector<Embed>>(data, "embeds", {});
+    replyMessageIDs = client->utils->get_or_else<vector<string>>(data, "replyMessageIds", {});
+    createdAt = client->utils->get_or_else<std::string>(data, "createdAt", "");
+    createdBy = client->utils->get_or_else<std::string>(data, "createdBy", "");
+	// Optional properties
+	guildID = client->utils->get_optional<std::string>(data, "serverId");
+	content = client->utils->get_optional<std::string>(data, "content");
+	isPrivate = client->utils->get_optional<bool>(data, "isPrivate");
+	isSilent = client->utils->get_optional<bool>(data, "isSilent");
+	mentions = client->utils->get_optional<std::string>(data, "mentions");
+	createdByWebhookID = client->utils->get_optional<std::string>(data, "createdByWebhookId");
+	updatedAt = client->utils->get_optional<std::string>(data, "updatedAt");
 }
 
 

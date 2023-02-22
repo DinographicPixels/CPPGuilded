@@ -17,9 +17,9 @@ namespace CPPGuilded {
 	class Member: public User {
 	 public:
 		std::vector<int> roleIDs;
-		std::string nickname;
+		std::optional<std::string> nickname;
 		std::string joinedAt;
-		bool isOwner = false;
+		std::optional<bool> isOwner = false;
 		Member(const json& data, Client* client);
 	};
 }

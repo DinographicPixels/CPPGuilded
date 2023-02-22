@@ -8,8 +8,10 @@
 #include "static.hpp"
 
 CPPGuilded::Member::Member(const json& data, Client* client): User(data.at("user"), client) {
-	this->roleIDs = client->utils->get_value<std::vector<int>>(data, "roleIds");
-	this->nickname = client->utils->get_value<std::string>(data, "nickname");
-	this->joinedAt = client->utils->get_value<std::string>(data, "joinedAt");
-	this->isOwner = client->utils->get_value<bool>(data, "isOwner");
+	// Properties
+	this->roleIDs = client->utils->get_or_else<std::vector<int>>(data, "roleIds", {});
+	this->joinedAt = client->utils->get_or_else<std::string>(data, "joinedAt", "");
+	// Optional properties
+	this->nickname = client->utils->get_optional<std::string>(data, "nickname");
+	this->isOwner = client->utils->get_optional<bool>(data, "isOwner");
 }
