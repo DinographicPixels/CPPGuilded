@@ -10,12 +10,15 @@
 
 #include <iostream>
 #include "static.hpp"
+#include "Classes/REST/Definitions.hpp"
 using namespace std;
 
 namespace CPPGuilded {
 	class Client;
     class Channel {
-    public:
+	 protected:
+		CPPGuilded::Client* client;
+     public:
         string id;
         string type;
         string name;
@@ -25,6 +28,16 @@ namespace CPPGuilded {
         string serverID;
         string groupID;
         DLL_EXPORT Channel(const json& data, Client* client);
+		/**
+		 * Edit this channel.
+		 * @param options Edit options.
+		 * @return Channel
+		 */
+		DLL_EXPORT CPPGuilded::Channel edit(CPPGuilded::MethodOptions::EditChannel options);
+		/**
+		 * Delete this channel.
+		 */
+		DLL_EXPORT void delete_c();
     };
 
     void sus();

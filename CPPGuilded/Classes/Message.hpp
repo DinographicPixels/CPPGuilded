@@ -15,8 +15,9 @@ namespace CPPGuilded {
 	class Client;
 	class Embed;
     class Message {
-    public:
-	    CPPGuilded::Client* client;
+	 protected:
+		CPPGuilded::Client* client;
+     public:
         string id;
         string type;
         string guildID;
