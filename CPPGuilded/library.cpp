@@ -115,6 +115,11 @@ void CPPGuilded::Client::delete_channel(std::string channelID)
 	return rest.channels.delete_channel(channelID);
 }
 
+CPPGuilded::Channel CPPGuilded::Client::get_channel(std::string channelID)
+{
+	return rest->channels.get_channel(channelID);
+}
+
 
 // EVENTS
 void CPPGuilded::Client::on_message_create(CPPGuilded::Message message) {};

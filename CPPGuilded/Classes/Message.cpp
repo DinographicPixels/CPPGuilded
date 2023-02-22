@@ -44,7 +44,7 @@ CPPGuilded::Message CPPGuilded::Message::edit_message(CPPGuilded::MethodOptions:
 	return client->rest.channels.edit_message(channelID, id, options);
 }
 
-void CPPGuilded::Message::delete_message()
+void CPPGuilded::Message::delete_m()
 {
 	client->rest.channels.delete_message(channelID, id);
 }

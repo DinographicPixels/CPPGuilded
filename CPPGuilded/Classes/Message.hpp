@@ -35,7 +35,7 @@ namespace CPPGuilded {
         DLL_EXPORT Message(const json& data, Client* client);
 		DLL_EXPORT CPPGuilded::Message create_message(CPPGuilded::MethodOptions::CreateMessage options);
 		DLL_EXPORT CPPGuilded::Message edit_message(CPPGuilded::MethodOptions::EditMessage options);
-		DLL_EXPORT void delete_message();
+		DLL_EXPORT void delete_m();
     };
 }
 

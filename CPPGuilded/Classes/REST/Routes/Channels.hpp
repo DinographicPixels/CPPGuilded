@@ -31,6 +31,7 @@ namespace CPPGuilded {
 		std::vector<CPPGuilded::Message> get_messages(std::string channelID, MethodFilters::GetChannelMessages filter);
 		CPPGuilded::Channel create_channel(MethodOptions::CreateChannel options);
 		CPPGuilded::Channel edit_channel(std::string channelID, MethodOptions::EditChannel options);
+		CPPGuilded::Channel get_channel(std::string channelID);
 		void delete_channel(std::string channelID);
 	};
 }

@@ -167,6 +167,12 @@ namespace CPPGuilded {
 		 * @param channelID ID of the channel to delete.
 		 */
 		DLL_EXPORT void delete_channel(std::string channelID);
+		/**
+		 * Get a guild channel.
+		 * @param channelID ID of the channel to get.
+		 * @return Channel
+		 */
+		DLL_EXPORT CPPGuilded::Channel get_channel(std::string channelID);
     };
 }
 

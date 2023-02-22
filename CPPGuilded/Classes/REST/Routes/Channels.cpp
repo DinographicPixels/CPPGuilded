@@ -106,3 +106,9 @@ void CPPGuilded::Channels::delete_channel(std::string channelID)
 	manager->request("DELETE", "/channels/" + channelID);
 }
 
+CPPGuilded::Channel CPPGuilded::Channels::get_channel(std::string channelID)
+{
+	RequestHandler::GuildedHTTPResponse req = manager->request("GET", "/channels/" + channelID);
+	json res = json::parse(req.body).at("channel");
+	return Channel(res, client);
+}
