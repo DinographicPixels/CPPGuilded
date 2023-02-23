@@ -14,7 +14,6 @@
 #include <mutex>
 #include <map>
 
-#include "Classes/Embed.hpp"
 using namespace std;
 
 enum Loglevel {
@@ -41,10 +40,7 @@ namespace CPPGuilded {
 			} else if constexpr (std::is_same<T, vector<int>>()){
 				vector<int> defVal = {};
 				return data.value(name, defVal);
-			} else if constexpr (std::is_same<T, vector<Embed>>()) {
-				vector<Embed> defVal = {};
-				return data.value(name, defVal);
-			} else {
+			}else{
 				return data.value(name, "UNDEFINED");
 			}
 		}
@@ -63,6 +59,10 @@ namespace CPPGuilded {
 				return {};
 			else
 				return std::make_optional<T>(j.at(key).get<T>());
+		}
+
+		DLL_EXPORT inline bool has_value(const json& j, const std::string& key) {
+			return j.count(key) > 0 && !j.at(key).is_null();
 		}
 
 		class Logger {

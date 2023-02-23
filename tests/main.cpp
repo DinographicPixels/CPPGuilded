@@ -21,6 +21,7 @@ class BotClient: public Client {
 		this->token = token;
 	};
 	void on_message_create(CPPGuilded::Message message) override {
+		std::cout << "detected message inside override method" << std::endl;
 		Embed messageEmbed = Embed();
 		messageEmbed.title = "embed testin'";
 		messageEmbed.description = "this is a desc";
@@ -35,10 +36,12 @@ class BotClient: public Client {
 			"https://www.guilded.gg/DinographicPixels",
 			"https://www.guilded.gg/asset/Default/Gil-md.png"
 		};
+		std::cout << message.content.value() << std::endl; // breakpoint;
 
 		CPPGuilded::Member messageAuthor = get_member_test(message);
 		if (messageAuthor.bot == true) return;
-
+		Message createdMSG = advanced_message_create_test(messageEmbed);
+		std::cout << "created embed msg : " << createdMSG.id << std::endl;
 		/**
 		Message greetingMessage = message_create_test();
 		advanced_message_create_test(messageEmbed);

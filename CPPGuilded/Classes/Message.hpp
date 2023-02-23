@@ -27,7 +27,7 @@ namespace CPPGuilded {
         vector<string> replyMessageIDs;
         std::optional<bool> isPrivate;
         std::optional<bool> isSilent;
-        std::optional<string> mentions;
+        std::optional<CPPGuilded::Models::APIMentions> mentions;
         string createdAt;
         string createdBy;
         std::optional<string> createdByWebhookID;

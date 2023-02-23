@@ -19,18 +19,25 @@ CPPGuilded::Message::Message(const json &data, Client* client): Base<std::string
 	// Properties
     type = client->utils->get_or_else<std::string>(data, "type", "");
     channelID = client->utils->get_or_else<std::string>(data, "channelId", "");
-    embeds = client->utils->get_or_else<vector<Embed>>(data, "embeds", {});
     replyMessageIDs = client->utils->get_or_else<vector<string>>(data, "replyMessageIds", {});
     createdAt = client->utils->get_or_else<std::string>(data, "createdAt", "");
     createdBy = client->utils->get_or_else<std::string>(data, "createdBy", "");
+	if (client->utils->has_value(data, "embeds")){
+		for (json embed : data.at("embeds")) {
+			embeds.push_back(CPPGuilded::Embed(embed));
+		};
+	}
 	// Optional properties
 	guildID = client->utils->get_optional<std::string>(data, "serverId");
 	content = client->utils->get_optional<std::string>(data, "content");
 	isPrivate = client->utils->get_optional<bool>(data, "isPrivate");
 	isSilent = client->utils->get_optional<bool>(data, "isSilent");
-	mentions = client->utils->get_optional<std::string>(data, "mentions");
+	std::cout << client->utils->get_optional<json>(data, "mentions")->dump(4, ' ') << std::endl;
 	createdByWebhookID = client->utils->get_optional<std::string>(data, "createdByWebhookId");
 	updatedAt = client->utils->get_optional<std::string>(data, "updatedAt");
+	if (client->utils->has_value(data, "mentions")){
+		mentions = CPPGuilded::Models::APIMentions(data.at("mentions"));
+	}
 }
 
 

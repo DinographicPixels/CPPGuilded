@@ -5,6 +5,59 @@
 
 #include "Embed.hpp"
 
+CPPGuilded::Embed::Embed(const string& title, const string& description)
+{
+	this->title = title;
+	this->description = description;
+}
+
+CPPGuilded::Embed::Embed(const json& embed)
+{
+	this->title = utils.get_or_else<std::string>(embed, "title", "");
+	this->description = utils.get_or_else<std::string>(embed, "description", "");
+	this->url = utils.get_or_else<std::string>(embed, "url", "");
+	this->color = utils.get_or_else<int>(embed, "color", 0);
+	this->timestamp = utils.get_or_else<std::string>(embed, "timestamp", "");
+
+	// FIELDS
+	if (utils.has_value(embed, "fields")){
+		for (json field : embed.at("fields")){
+			fieldsField f;
+			field.at("name").get_to<std::string>(f.name);
+			field.at("value").get_to<std::string>(f.value);
+			field.at("inline").get_to<bool>(f.isInline);
+			fields.push_back(f);
+		}
+	}
+
+	// FOOTER
+	if (utils.has_value(embed, "footer")){
+		json jsonFooter = embed.at("footer");
+		footer.text = utils.get_or_else<std::string>(jsonFooter, "text", "");
+		footer.icon_url = utils.get_or_else<std::string>(jsonFooter, "icon_url", "");
+	}
+
+	// THUMBNAIL
+	if (utils.has_value(embed, "thumbnail")){
+		json jsonThumbnail = embed.at("thumbnail");
+		thumbnail.url = utils.get_or_else<std::string>(jsonThumbnail, "url", "");
+	}
+
+	// IMAGE
+	if (utils.has_value(embed, "image")){
+		json jsonImage = embed.at("image");
+		image.url = utils.get_or_else<std::string>(jsonImage, "url", "");
+	}
+
+	//AUTHOR
+	if (utils.has_value(embed, "author")){
+		json jsonAuthor = embed.at("author");
+		author.name = utils.get_or_else<std::string>(jsonAuthor, "name", "");
+		author.url = utils.get_or_else<std::string>(jsonAuthor, "url", "");
+		author.icon_url = utils.get_or_else<std::string>(jsonAuthor, "icon_url", "");
+	}
+}
+
 json CPPGuilded::Embed::to_json() {
 	json jsonEmbed;
 	// SIMPLE PROPERTIES

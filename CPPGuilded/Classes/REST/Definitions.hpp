@@ -10,9 +10,10 @@
 
 #include <iostream>
 #include "static.hpp"
+#include "Classes/Embed.hpp"
+#include "Classes/Utils.hpp"
 
 namespace CPPGuilded {
-	class Embed;
 	class MethodOptions {
 	 public:
 		struct CreateMessage {
@@ -53,6 +54,56 @@ namespace CPPGuilded {
 			int limit;
 			bool includePrivate;
 			NLOHMANN_DEFINE_TYPE_INTRUSIVE(GetChannelMessages, before, after, limit, includePrivate);
+		};
+	};
+	class Models {
+	 private:
+	 public:
+		struct APIMentionsObjectStringID {
+			std::string id;
+		};
+		struct APIMentionsObjectIntegerID {
+			int id;
+		};
+		class APIMentions {
+		 private:
+			Utils utils;
+		 public:
+			vector<APIMentionsObjectStringID> users;
+			vector<APIMentionsObjectStringID> channels;
+			vector<APIMentionsObjectIntegerID> roles;
+			bool everyone;
+			bool here;
+
+			APIMentions(const json& mentions){
+				if (utils.has_value(mentions, "users")){
+					for (json userObject : mentions.at("users")){
+						APIMentionsObjectStringID object;
+						userObject.at("id").get_to(object.id);
+						users.push_back(object);
+					}
+				}
+
+				if (utils.has_value(mentions, "channels")){
+					for (json channelObject : mentions.at("channels")){
+						APIMentionsObjectStringID object;
+						channelObject.at("id").get_to(object.id);
+						channels.push_back(object);
+					}
+				}
+
+				if (utils.has_value(mentions, "roles")){
+					for (json roleObject : mentions.at("roles")){
+						APIMentionsObjectIntegerID object;
+						roleObject.at("id").get_to(object.id);
+						roles.push_back(object);
+					}
+				}
+
+				this->everyone = utils.get_or_else<bool>(mentions, "everyone", false);
+				this->here = utils.get_or_else<bool>(mentions, "here", false);
+			};
+			// NLOHMANN_DEFINE_TYPE_INTRUSIVE(APIMentions, everyone, here);
 		};
 	};
 }
