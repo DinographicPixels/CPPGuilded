@@ -84,7 +84,7 @@ CPPGuilded::RequestHandler::GuildedHTTPResponse CPPGuilded::RequestHandler::requ
 		throw CPPGuilded::HTTPError(parsedBody["message"], parsedBody["code"]);
 	}
 
-	std::cout << "debug (res): " << res << std::endl;
+	// std::cout << "debug (res): " << res << std::endl;
 
 	beast::error_code errCode;
 	stream.shutdown(errCode);

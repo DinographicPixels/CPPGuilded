@@ -30,7 +30,7 @@ CPPGuilded::Message CPPGuilded::Channels::create_message(std::string channelID, 
 		// json jsonEmbed = json{*messageEmbed};
 		//jsonOptions["embeds"] = jsonEmbed;
 	}
-	RequestHandler::GuildedHTTPResponse req = manager->request("POST", "/channels/" + channelID + "/messages", jsonOptions.dump());
+	RequestHandler::GuildedHTTPResponse req = manager->request("POST", "/channels/" + channelID + "/messages", jsonOptions.dump(4, ' '));
 	json res = json::parse(req.body).at("message");
 
 	return Message(res, client);
@@ -44,7 +44,7 @@ CPPGuilded::Message CPPGuilded::Channels::edit_message(std::string channelID, st
 			jsonOptions["embeds"].push_back(jsonEmbed);
 		}
 	}
-	RequestHandler::GuildedHTTPResponse req = manager->request("PUT", "/channels/" + channelID + "/messages/" + messageID, jsonOptions.dump());
+	RequestHandler::GuildedHTTPResponse req = manager->request("PUT", "/channels/" + channelID + "/messages/" + messageID, jsonOptions.dump(4, ' '));
 	json res = json::parse(req.body).at("message");
 
 	return Message(res, client);
@@ -83,7 +83,7 @@ CPPGuilded::Channel CPPGuilded::Channels::create_channel(MethodOptions::CreateCh
 	if (options.groupId) jsonOptions["groupId"] = options.groupId.value();
 	if (options.isPublic) jsonOptions["isPublic"] = options.isPublic.value();
 	std::cout << jsonOptions << std::endl;
-	RequestHandler::GuildedHTTPResponse req = manager->request("POST", "/channels", jsonOptions.dump());
+	RequestHandler::GuildedHTTPResponse req = manager->request("POST", "/channels", jsonOptions.dump(4, ' '));
 	json res = json::parse(req.body).at("channel");
 	return Channel(res, client);
 
@@ -96,7 +96,7 @@ CPPGuilded::Channel CPPGuilded::Channels::edit_channel(std::string channelID, Me
 	if (options.topic) jsonOptions["topic"] = options.topic.value();
 	if (options.isPublic) jsonOptions["isPublic"] = options.isPublic.value();
 
-	RequestHandler::GuildedHTTPResponse req = manager->request("PATCH", "/channels/" + channelID, jsonOptions.dump());
+	RequestHandler::GuildedHTTPResponse req = manager->request("PATCH", "/channels/" + channelID, jsonOptions.dump(4, ' '));
 	json res = json::parse(req.body).at("channel");
 	return Channel(res, client);
 }

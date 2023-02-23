@@ -38,7 +38,7 @@ shared_future<void> CPPGuilded::GatewayHandler::ON_GATEWAY_PARSED_PACKET(const s
 			{ "ServerChannelDeleted", [&](const json& data) { channel_handler->channel_delete(data, client); } }
 		};
 		std::cout << "event name: " << name << std::endl;
-		std::cout << "data: " << data << std::endl;
+		std::cout << "data: " << data.dump(4, ' ') << std::endl;
 		if (data.contains("message") && data.at("message").value("type", "UNDEFINED") == "system") return;
 		if (toHandlerMap.count(name) > 0) std::cout << "HANDLER CALLED" << std::endl; toHandlerMap.at(name)(data);
 	});

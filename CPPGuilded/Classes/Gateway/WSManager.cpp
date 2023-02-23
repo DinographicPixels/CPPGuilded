@@ -178,7 +178,7 @@ bool CPPGuilded::WSManager::getState() {
 void CPPGuilded::WSManager::on_websocket_message(const string& message) {
 	json payload = json::parse(message);
 	std::cout << "websocket message" << std::endl;
-	std::cout << payload << std::endl;
+	std::cout << payload.dump(4, ' ') << std::endl;
 	// log.debug(payload);
 	if (payload.count("s") > 0) lastMessageID = payload["s"].get<std::string>();
 	int payloadOPCode = payload.count("op") > 0 ? payload["op"].get<int>() : throw "OP Code not provided by API.";
