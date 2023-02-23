@@ -10,11 +10,11 @@
 
 #include "Classes/User.hpp"
 
-CPPGuilded::Misc::Misc(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager): client(client), manager(manager) {};
+CPPGuilded::Misc::Misc(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager): client(client), manager(std::move(manager)) {};
 
 CPPGuilded::User CPPGuilded::Misc::get_user(const std::string& userID)
 {
 	RequestHandler::GuildedHTTPResponse req = this->manager->request("GET", "/users/" + userID);
 	json res = json::parse(req.body).at("user");
-	return User(res, client);
+	return User{res, client};
 };

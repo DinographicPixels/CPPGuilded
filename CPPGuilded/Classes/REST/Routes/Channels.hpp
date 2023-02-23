@@ -24,15 +24,15 @@ namespace CPPGuilded {
 		Utils::Logger log;
 	 public:
 		Channels(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager);
-		CPPGuilded::Message create_message(std::string channelID, MethodOptions::CreateMessage options);
-		CPPGuilded::Message edit_message(std::string channelID, std::string messageID, MethodOptions::EditMessage options);
-		void delete_message(std::string channelID, std::string messageID);
-		CPPGuilded::Message get_message(std::string channelID, std::string messageID);
-		std::vector<CPPGuilded::Message> get_messages(std::string channelID, MethodFilters::GetChannelMessages filter);
-		CPPGuilded::Channel create_channel(MethodOptions::CreateChannel options);
-		CPPGuilded::Channel edit_channel(std::string channelID, MethodOptions::EditChannel options);
-		CPPGuilded::Channel get_channel(std::string channelID);
-		void delete_channel(std::string channelID);
+		CPPGuilded::Message create_message(const std::string& channelID, const MethodOptions::CreateMessage& options);
+		CPPGuilded::Message edit_message(const std::string& channelID, const std::string& messageID, const MethodOptions::EditMessage& options);
+		void delete_message(const std::string& channelID, const std::string& messageID);
+		CPPGuilded::Message get_message(const std::string& channelID, const std::string& messageID);
+		std::vector<CPPGuilded::Message> get_messages(const std::string& channelID, const MethodFilters::GetChannelMessages& filter);
+		CPPGuilded::Channel create_channel(const MethodOptions::CreateChannel& options);
+		CPPGuilded::Channel edit_channel(const std::string& channelID, const MethodOptions::EditChannel& options);
+		CPPGuilded::Channel get_channel(const std::string& channelID);
+		void delete_channel(const std::string& channelID);
 	};
 }
 

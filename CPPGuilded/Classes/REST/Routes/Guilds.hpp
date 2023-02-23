@@ -15,14 +15,23 @@ namespace CPPGuilded {
 	class RequestHandler;
 	class Member;
 	class Guild;
+	class BannedMember;
 	class Guilds {
 	 protected:
 		CPPGuilded::Client* client;
 		std::shared_ptr<CPPGuilded::RequestHandler> manager;
 	 public:
 		Guilds(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager);
-		CPPGuilded::Member get_member(std::string guildID, std::string memberID);
-		CPPGuilded::Guild get_guild(std::string guildID);
+		CPPGuilded::Member get_member(const std::string& guildID, const std::string& memberID);
+		vector<CPPGuilded::Member> get_members(const std::string& guildID);
+		CPPGuilded::Guild get_guild(const std::string& guildID);
+		std::string change_member_nickname(const std::string& guildID, const std::string& memberID, const std::string& nickname);
+		void delete_member_nickname(const std::string& guildID, const std::string& memberID);
+		void remove_member(const std::string& guildID, const std::string& memberID);
+		CPPGuilded::BannedMember create_ban(const std::string& guildID, const std::string& memberID, const std::optional<std::string>& reason);
+		void remove_ban(const std::string& guildID, const std::string& memberID);
+		CPPGuilded::BannedMember get_ban(const std::string& guildID, const std::string& memberID);
+		vector<CPPGuilded::BannedMember> get_bans(const std::string& guildID);
 	};
 }
 
