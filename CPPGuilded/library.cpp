@@ -23,6 +23,8 @@
 #include "Classes/Gateway/GatewayHandler.hpp"
 #include "Classes/Member.hpp"
 #include "Classes/REST/RESTManager.hpp"
+#include "Classes/BannedMember.hpp"
+#include "Classes/ForumThread.hpp"
 
 
 namespace beast = boost::beast;
@@ -31,8 +33,7 @@ namespace net = boost::asio;
 namespace ssl = net::ssl;
 using tcp = net::ip::tcp;
 
-CPPGuilded::Client::Client(string token): rest(RESTManager(this)) {
-    this->token = token;
+CPPGuilded::Client::Client(string token): token(std::move(token)), rest(RESTManager(this)) {
     this->utils = std::make_unique<Utils>();
 	this->log = Utils::Logger("Client | CPPGuilded");
 	this->gatewayHandler = std::make_shared<GatewayHandler>(this);
@@ -47,7 +48,7 @@ bool CPPGuilded::Client::hello(bool sus) {
     // Channel* retrievedChannel = new Channel (json::parse(reqRes.body).at("channel"));
     // std::cout << "here we go: " << retrievedChannel->id << std::endl;
     // std::cout << json::parse(reqRes.body).at("channel") << std::endl;
-    if (sus == true){
+    if (sus){
         std::cout << "SUS" << std::endl;
     }else {
         std::cout << "Hello, World!" << std::endl;
@@ -61,65 +62,6 @@ void CPPGuilded::Client::connect() {
 	this->gatewayHandler->connect();
 }
 
-CPPGuilded::Message CPPGuilded::Client::create_message(std::string channelID,
-	CPPGuilded::MethodOptions::CreateMessage options)
-{
-	return rest.channels.create_message(channelID, options);
-}
-
-CPPGuilded::Message CPPGuilded::Client::edit_message(std::string channelID,
-	std::string messageID,
-	CPPGuilded::MethodOptions::EditMessage options)
-{
-	return rest.channels.edit_message(channelID, messageID, options);
-}
-
-void CPPGuilded::Client::delete_message(std::string channelID, std::string messageID)
-{
-	return rest.channels.delete_message(channelID, messageID);
-}
-
-CPPGuilded::Member CPPGuilded::Client::get_member(std::string guildID, std::string memberID)
-{
-	return rest.guilds.get_member(guildID, memberID);
-}
-
-CPPGuilded::Message CPPGuilded::Client::get_message(std::string channelID, std::string messageID)
-{
-	return rest.channels.get_message(channelID, messageID);
-}
-
-std::vector<CPPGuilded::Message> CPPGuilded::Client::get_messages(std::string channelID,
-	CPPGuilded::MethodFilters::GetChannelMessages filter)
-{
-	return rest.channels.get_messages(channelID, filter);
-}
-
-CPPGuilded::User CPPGuilded::Client::get_user(const std::string& userID)
-{
-	return rest.misc.get_user(userID);
-}
-
-CPPGuilded::Channel CPPGuilded::Client::create_channel(CPPGuilded::MethodOptions::CreateChannel options)
-{
-	return rest.channels.create_channel(options);
-};
-
-CPPGuilded::Channel CPPGuilded::Client::edit_channel(std::string channelID, MethodOptions::EditChannel options)
-{
-	return rest.channels.edit_channel(channelID, options);
-}
-
-void CPPGuilded::Client::delete_channel(std::string channelID)
-{
-	return rest.channels.delete_channel(channelID);
-}
-
-CPPGuilded::Channel CPPGuilded::Client::get_channel(std::string channelID)
-{
-	return rest.channels.get_channel(channelID);
-}
-
 
 // EVENTS
 void CPPGuilded::Client::on_message_create(CPPGuilded::Message message) {};
@@ -128,3 +70,11 @@ void CPPGuilded::Client::on_message_delete(CPPGuilded::Message message) {};
 void CPPGuilded::Client::on_channel_create(CPPGuilded::Channel channel) {};
 void CPPGuilded::Client::on_channel_update(CPPGuilded::Channel channel) {};
 void CPPGuilded::Client::on_channel_delete(CPPGuilded::Channel channel) {};
+void CPPGuilded::Client::on_guild_member_update(CPPGuilded::Models::MemberUpdateInfo memberUpdateInfo) {};
+void CPPGuilded::Client::on_guild_member_remove(CPPGuilded::Models::MemberRemoveInfo memberRemoveInfo) {};
+void CPPGuilded::Client::on_guild_member_ban(CPPGuilded::BannedMember bannedMember) {} ;
+void CPPGuilded::Client::on_guild_member_unban(CPPGuilded::BannedMember bannedMember) {};
+void CPPGuilded::Client::on_forum_thread_create(CPPGuilded::ForumThread forumThread) {};
+void CPPGuilded::Client::on_forum_thread_update(CPPGuilded::ForumThread forumThread) {};
+void CPPGuilded::Client::on_forum_thread_delete(CPPGuilded::ForumThread forumThread) {};
+

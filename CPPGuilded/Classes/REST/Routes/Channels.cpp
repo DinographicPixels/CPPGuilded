@@ -12,6 +12,7 @@
 #include "Classes/Channel.hpp"
 #include "Classes/RequestHandler.hpp"
 #include "Classes/Embed.hpp"
+#include "Classes/ForumThread.hpp"
 
 CPPGuilded::Channels::Channels(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager): client(client), manager(std::move(manager)) {
 	log = Utils::Logger("REST/Channels | CPPGuilded");
@@ -109,4 +110,34 @@ CPPGuilded::Channel CPPGuilded::Channels::get_channel(const std::string& channel
 	RequestHandler::GuildedHTTPResponse req = manager->request("GET", "/channels/" + channelID);
 	json res = json::parse(req.body).at("channel");
 	return Channel{res, client};
+}
+
+CPPGuilded::ForumThread CPPGuilded::Channels::create_forum_thread(const std::string& channelID,
+	const std::string& title,
+	const std::string& content)
+{
+	if (title.empty() || content.empty()) throw CPPGuilded::GuildedException("REST request failed: title and content are required properties.");
+	RequestHandler::GuildedHTTPResponse req = manager->request("POST", "/channels/" + channelID + "/topics", json{{"title", title}, {"content", content}});
+	json res = json::parse(req.body).at("forumTopic");
+	return ForumThread{res, client};
+}
+
+CPPGuilded::ForumThread CPPGuilded::Channels::edit_forum_thread(const std::string& channelID,
+	const std::string& threadID,
+	const std::optional<std::string>& title,
+	const std::optional<std::string>& content)
+{
+	json requestOptions;
+	if (title) requestOptions.push_back({"title", title.value()});
+	if (content) requestOptions.push_back({"content", content.value()});
+
+	RequestHandler::GuildedHTTPResponse req = manager->request("PATCH", "/channels/" + channelID + "/topics/" + threadID, requestOptions);
+	json res = json::parse(req.body).at("forumTopic");
+
+	return ForumThread{res, client};
+}
+
+void CPPGuilded::Channels::delete_forum_thread(const std::string& channelID, const std::string& threadID)
+{
+	manager->request("DELETE", "/channels/" + channelID + "/topics/" + threadID);
 }

@@ -9,4 +9,6 @@
 #include "Classes/User.hpp"
 #include "Classes/Member.hpp"
 #include "Classes/Guild.hpp"
+#include "Classes/ForumThread.hpp"
+#include "Classes/BannedMember.hpp"
 #include "Classes/REST/Definitions.hpp"

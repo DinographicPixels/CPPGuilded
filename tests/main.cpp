@@ -70,39 +70,84 @@ class BotClient: public Client {
 		get_guild_test(message.guildID.value());
 		this_thread::sleep_for(chrono::seconds(1));
 	}
+	void on_message_update(CPPGuilded::Message message) override {
+		message;
+	}
+	void on_message_delete(CPPGuilded::Message message) override {
+		message;
+	}
+	void on_forum_thread_create(CPPGuilded::ForumThread forumThread) override {
+		forumThread;
+	}
+
+	void on_forum_thread_update(CPPGuilded::ForumThread forumThread) override {
+		forumThread;
+	}
+
+	void on_forum_thread_delete(CPPGuilded::ForumThread forumThread) override {
+		forumThread;
+	}
+
+	void on_guild_member_update(CPPGuilded::Models::MemberUpdateInfo memberUpdateInfo) override {
+		memberUpdateInfo;
+	}
+
+	void on_guild_member_ban(CPPGuilded::BannedMember bannedMember) override {
+		bannedMember;
+	}
+
+	void on_channel_create(CPPGuilded::Channel channel) override {
+		channel;
+	}
+
+	void on_channel_update(CPPGuilded::Channel channel) override {
+		channel;
+	}
+
+	void on_channel_delete(CPPGuilded::Channel channel) override {
+		channel;
+	}
+
+	void on_guild_member_remove(CPPGuilded::Models::MemberRemoveInfo memberRemoveInfo) override {
+		memberRemoveInfo;
+	}
+
+	void on_guild_member_unban(CPPGuilded::BannedMember bannedMember) override {
+		bannedMember;
+	}
 
 	Message message_create_test() {
-		return this->create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi" });
+		return this->rest.channels.create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi" });
 	}
 
 	Message advanced_message_create_test(CPPGuilded::Embed messageEmbed) {
-		return this->create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, { messageEmbed }});
+		return this->rest.channels.create_message("b1df1cbb-9074-4692-b6a0-3997a47cacf1", { "hi", { "0fbfb1eb-b884-42ec-a89d-253edd329997" }, false, false, { messageEmbed }});
 	}
 
 	Message edit_message_test(Message greetingMessage) {
-		return this->edit_message(greetingMessage.channelID, greetingMessage.id, { "bye!" });
+		return this->rest.channels.edit_message(greetingMessage.channelID, greetingMessage.id, { "bye!" });
 	}
 
 	void delete_message_test(Message greetingMessage) {
-		this->delete_message(greetingMessage.channelID, greetingMessage.id);
+		this->rest.channels.delete_message(greetingMessage.channelID, greetingMessage.id);
 	}
 
 	void get_message_test(Message greetingMessage) {
-		Message fetchMessage = this->get_message(greetingMessage.channelID, greetingMessage.id);
+		Message fetchMessage = this->rest.channels.get_message(greetingMessage.channelID, greetingMessage.id);
 		std::cout << "fetchMessage: " << fetchMessage.id << std::endl;
 	}
 
 	void get_messages_test(Message greetingMessage) {
-		std::vector<Message> fetchMessages = this->get_messages(greetingMessage.channelID, {});
+		std::vector<Message> fetchMessages = this->rest.channels.get_messages(greetingMessage.channelID, {});
 		std::cout << "fetchMESSAGES: " << fetchMessages.size() << std::endl;
 	}
 
 	Member get_member_test(Message message) {
-		return this->get_member(message.guildID.value(), message.createdBy);
+		return this->rest.guilds.get_member(message.guildID.value(), message.createdBy);
 	}
 
 	User get_user_test(const std::string& userID) {
-		User user = get_user(userID);
+		User user = rest.misc.get_user(userID);
 		std::cout << "my user id: " << user.id << std::endl;
 		return user;
 	}
@@ -113,13 +158,13 @@ class BotClient: public Client {
 		options.serverId = "aE9VwoAj";
 		options.name = "name";
 		options.type = "chat";
-		Channel createdChannel = this->create_channel(options);
+		Channel createdChannel = this->rest.channels.create_channel(options);
 		std::cout << "channel id here: "  << createdChannel.id << std::endl; // breakpoint here.
 		std::cout << "channel_tests" << std::endl;
 		this_thread::sleep_for(chrono::seconds(1));
-		this->edit_channel(createdChannel.id, { "new name" });
+		this->rest.channels.edit_channel(createdChannel.id, { "new name" });
 		this_thread::sleep_for(chrono::seconds(1));
-		this->delete_channel(createdChannel.id);
+		this->rest.channels.delete_channel(createdChannel.id);
 	}
 
 	void get_guild_test(const std::string& guildID) {

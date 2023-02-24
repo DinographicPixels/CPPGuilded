@@ -12,6 +12,7 @@
 #include "static.hpp"
 #include "Classes/Embed.hpp"
 #include "Classes/Utils.hpp"
+#include "Classes/Exceptions.hpp"
 
 namespace CPPGuilded {
 	class MethodOptions {
@@ -104,6 +105,37 @@ namespace CPPGuilded {
 				this->here = utils.get_or_else<bool>(mentions, "here", false);
 			};
 			// NLOHMANN_DEFINE_TYPE_INTRUSIVE(APIMentions, everyone, here);
+		};
+
+		class MemberUpdateInfo {
+		 private:
+			Utils utils;
+		 public:
+			std::string memberID;
+			std::string guildID;
+			std::optional<std::string> nickname;
+			MemberUpdateInfo(const json& data) {
+				if (!utils.has_value(data, "userInfo")) throw CPPGuilded::GuildedException("Couldn't get user information data from payload.");
+				memberID = utils.get_or_else<std::string>(data.at("userInfo"), "id", "");
+				guildID = utils.get_or_else<std::string>(data, "serverId", "");
+				nickname = utils.get_optional<std::string>(data.at("userInfo"), "nickname");
+			};
+		};
+
+		class MemberRemoveInfo {
+		 private:
+			Utils utils;
+		 public:
+			std::string guildID;
+			std::string memberID;
+			std::optional<bool> isKicked;
+			std::optional<bool> isBanned;
+			MemberRemoveInfo(const json& data){
+				guildID = utils.get_or_else<std::string>(data, "serverId", "");
+				memberID = utils.get_or_else<std::string>(data, "memberId", "");
+				isKicked = utils.get_optional<bool>(data, "isKick");
+				isBanned = utils.get_optional<bool>(data, "isBan");
+			};
 		};
 	};
 }

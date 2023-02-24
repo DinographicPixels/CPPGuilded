@@ -19,13 +19,28 @@ namespace CPPGuilded {
 	class Client;
 	class RESTManager {
 	 protected:
+		/** Client  */
 		CPPGuilded::Client* client;
+		/** RequestHandler used to execute HTTPS requests. */
 		std::shared_ptr<CPPGuilded::RequestHandler> manager = make_shared<RequestHandler>(client);;
 	 public:
+		/**
+		 * REST Methods related to channels.
+		 */
 		CPPGuilded::Channels channels;
+		/**
+		 * REST Methods related to guilds.
+		 */
 		CPPGuilded::Guilds guilds;
+		/**
+		 * REST Methods related to neither channels and guilds.
+		 */
 		CPPGuilded::Misc misc;
-		RESTManager(CPPGuilded::Client* client);
+		/**
+		 * RESTManager's constructor.
+		 * @param client Client.
+		 */
+		DLL_EXPORT RESTManager(CPPGuilded::Client* client);
 	};
 }
 

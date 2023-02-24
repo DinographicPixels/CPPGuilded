@@ -45,7 +45,7 @@ std::string CPPGuilded::Guilds::change_member_nickname(const std::string& guildI
 	return res;
 }
 
-void CPPGuilded::Guilds::delete_member_nickname(const std::string& guildID, const std::string& memberID)
+void CPPGuilded::Guilds::remove_member_nickname(const std::string& guildID, const std::string& memberID)
 {
 	manager->request("DELETE", "/servers/" + guildID + "/members/" + memberID + "/nickname");
 }

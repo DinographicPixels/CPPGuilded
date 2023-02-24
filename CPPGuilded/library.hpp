@@ -30,6 +30,7 @@ namespace CPPGuilded {
 	class Member;
 	class Message;
 	class GatewayHandler;
+	class ForumThread;
 	// struct GuildedHTTPResponse;
     class Client {
     private:
@@ -68,7 +69,7 @@ namespace CPPGuilded {
 		DLL_EXPORT void connect();
 
 
-		// EVENTS
+		/** EVENTS */
 		/**
 		 * Event fired when a channel message is created.
 		 * @param message The created message.
@@ -99,80 +100,42 @@ namespace CPPGuilded {
 		 * @param channel Deleted channel.
 		 */
 		DLL_EXPORT virtual void on_channel_delete(CPPGuilded::Channel channel);
+		/**
+		 * Event fired when a member has updated his guild profile.
+		 * @param memberUpdateInfo Information related the member's updated profile.
+		 */
+		DLL_EXPORT virtual void on_guild_member_update(CPPGuilded::Models::MemberUpdateInfo memberUpdateInfo);
+		/**
+		 * Event fired when a member left from a guild.
+		 * @param memberRemoveInfo Information about the removal of a member.
+		 */
+		DLL_EXPORT virtual void on_guild_member_remove(CPPGuilded::Models::MemberRemoveInfo memberRemoveInfo);
+		/**
+		 * Event fired when a member gets banned.
+		 * @param bannedMember Information about the ban.
+		 */
+		DLL_EXPORT virtual void on_guild_member_ban(CPPGuilded::BannedMember bannedMember);
+		/**
+		 * Event fired when a member is unbanned.
+		 * @param bannedMember Information about the removed ban.
+		 */
+		DLL_EXPORT virtual void on_guild_member_unban(CPPGuilded::BannedMember bannedMember);
+		/**
+		 * Event fired when a forum thread is created.
+		 * @param forumThread Created forum thread.
+		 */
+		DLL_EXPORT virtual void on_forum_thread_create(CPPGuilded::ForumThread forumThread);
+		/**
+		 * Event fired when a forum thread is updated.
+		 * @param forumThread Updated forum thread.
+		 */
+		DLL_EXPORT virtual void on_forum_thread_update(CPPGuilded::ForumThread forumThread);
+		/**
+		 * Event fired when a forum thread is deleted.
+		 * @param forumThread Deleted forum thread.
+		 */
+		DLL_EXPORT virtual void on_forum_thread_delete(CPPGuilded::ForumThread forumThread);
 
-		// METHODS
-		/**
-		 * Create a message in a chat channel.
-		 * @param channelID ID of the channel to create message in.
-		 * @param options Create message options.
-		 * @return Message
-		 */
-		DLL_EXPORT CPPGuilded::Message create_message(std::string channelID, CPPGuilded::MethodOptions::CreateMessage options);
-		/**
-		 * Edit a channel message.
-		 * @param channelID ID of the channel containing the message to edit.
-		 * @param messageID ID of the message to edit.
-		 * @param options Edit options.
-		 * @return Message
-		 */
-		DLL_EXPORT CPPGuilded::Message edit_message(std::string channelID, std::string messageID, CPPGuilded::MethodOptions::EditMessage options);
-		/**
-		 * Delete a channel message.
-		 * @param channelID ID of the channel containing the message to delete.
-		 * @param messageID ID of the message to delete.
-		 */
-		DLL_EXPORT void delete_message(std::string channelID, std::string messageID);
-		/**
-		 * Get a guild member.
-		 * @param guildID ID of the guild the member is in.
-		 * @param memberID ID of the member to get.
-		 * @return Member
-		 */
-		DLL_EXPORT CPPGuilded::Member get_member(std::string guildID, std::string memberID);
-		/**
-		 * Get a channel message.
-		 * @param channelID ID of the channel containing the message to get.
-		 * @param messageID ID of the message to get.
-		 * @return Message
-		 */
-		DLL_EXPORT CPPGuilded::Message get_message(std::string channelID, std::string messageID);
-		/**
-		 * Get channel messages.
-		 * @param channelID The ID of the channel containing messages.
-		 * @param filter Filter output.
-		 * @return std::vector<CPPGuilded::Message>
-		 */
-		DLL_EXPORT std::vector<CPPGuilded::Message> get_messages(std::string channelID, CPPGuilded::MethodFilters::GetChannelMessages filter);
-		/**
-		 * Get a user.
-		 * @param userID The ID of a Guilded user.
-		 * @return User
-		 */
-		DLL_EXPORT CPPGuilded::User get_user(const std::string& userID);
-		/**
-		 * Create a channel within a Guild.
-		 * @param options Create options.
-		 * @return Channel
-		 */
-		DLL_EXPORT CPPGuilded::Channel create_channel(MethodOptions::CreateChannel options);
-		/**
-		 * Edit a guild channel.
-		 * @param channelID ID of the channel to update.
-		 * @param options Edit options.
-		 * @return Channel
-		 */
-		DLL_EXPORT CPPGuilded::Channel edit_channel(std::string channelID, MethodOptions::EditChannel options);
-		/**
-		 * Delete a guild channel.
-		 * @param channelID ID of the channel to delete.
-		 */
-		DLL_EXPORT void delete_channel(std::string channelID);
-		/**
-		 * Get a guild channel.
-		 * @param channelID ID of the channel to get.
-		 * @return Channel
-		 */
-		DLL_EXPORT CPPGuilded::Channel get_channel(std::string channelID);
     };
 }
 

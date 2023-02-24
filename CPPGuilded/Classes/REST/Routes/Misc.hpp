@@ -18,13 +18,13 @@ namespace CPPGuilded {
 		CPPGuilded::Client* client;
 		std::shared_ptr<CPPGuilded::RequestHandler> manager;
 	 public:
+		Misc(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager);
 		/**
 		 * Get a user.
-		 * @param userID The ID of a Guilded user.
-		 * @return User
-		 */
+ 		 * @param userID The ID of a Guilded user.
+ 		 * @return User
+ 		*/
 		CPPGuilded::User get_user(const std::string& userID);
-		Misc(CPPGuilded::Client* client, std::shared_ptr<CPPGuilded::RequestHandler> manager);
 	};
 }
 
